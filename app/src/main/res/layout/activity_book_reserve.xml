@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:context="com.example.arnavbose.libyv2.BookReserve">
+
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+
+            <ImageView
+                android:id="@+id/imageViewBookReserve"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/toolbar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="40dp"
+                android:adjustViewBounds="true"
+                android:background="#d3d3d3"
+                android:maxHeight="180dp"
+                android:maxWidth="120dp"
+                android:minHeight="180dp"
+                android:minWidth="120dp"
+                android:layout_marginLeft="132dp" />
+
+            <View
+                android:id="@+id/viewHorizontalRule"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentStart="false"
+                android:layout_centerVertical="true"
+                android:layout_margin="16dp"
+                android:background="#000000"
+                android:paddingBottom="16dp"
+                android:paddingTop="16dp" />
+
+            <TextView
+                android:id="@+id/textViewDetails"
+                style="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/viewHorizontalRule"
+                android:layout_below="@+id/viewHorizontalRule"
+                android:text="Details:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textStyle="bold"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/textViewBookDetailSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textViewDetails"
+                android:layout_below="@+id/textViewDetails"
+                android:layout_marginTop="8dp"
+                android:text="Title:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/textViewBookDetailsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textViewBookDetailSubTitle"
+                android:layout_below="@+id/textViewBookDetailSubTitle"
+                android:text="Micro"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/textViewBookDetailTitleAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textViewBookDetailsTitle"
+                android:layout_below="@+id/textViewBookDetailsTitle"
+                android:layout_marginTop="8dp"
+                android:text="Author:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/textViewBookDetailAuthor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textViewBookDetailTitleAuthor"
+                android:layout_below="@+id/textViewBookDetailTitleAuthor"
+                android:text="Michael Crichton"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/textViewBookDetailTitleISBN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textViewBookDetailAuthor"
+                android:layout_below="@+id/textViewBookDetailAuthor"
+                android:layout_marginTop="8dp"
+                android:text="ISBN:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/textViewBookDetailISBN"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textViewBookDetailTitleISBN"
+                android:layout_below="@+id/textViewBookDetailTitleISBN"
+                android:text="9780060873172"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/textViewBookDetailTitlePublisher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textViewBookDetailISBN"
+                android:layout_below="@+id/textViewBookDetailISBN"
+                android:layout_marginTop="8dp"
+                android:text="Publisher:"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_marginLeft="16dp" />
+
+            <TextView
+                android:id="@+id/textViewBookDetailPublisher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignStart="@+id/textViewBookDetailTitlePublisher"
+                android:layout_below="@+id/textViewBookDetailTitlePublisher"
+                android:text="Harper Collins"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_marginLeft="16dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

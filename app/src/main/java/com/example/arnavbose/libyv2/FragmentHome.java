@@ -35,15 +35,6 @@ public class FragmentHome extends Fragment {
         mAdapter = new RecyclerViewHomeAdapter(getHomeDataSet());
         mRecyclerView.setAdapter(mAdapter);
 
-        buttonHomeSearch = (Button)view.findViewById(R.id.buttonHomeSearch);
-        buttonHomeSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(getContext(), Search.class);
-                startActivity(i);
-            }
-        });
-
         return view;
     }
 

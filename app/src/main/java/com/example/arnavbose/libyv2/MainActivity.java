@@ -1,13 +1,12 @@
 package com.example.arnavbose.libyv2;
 
-import android.app.SearchManager;
-import android.content.Context;
+
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -150,6 +149,11 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+        switch(id){
+            case R.id.action_search:
+                startActivity(new Intent(this, Search.class));
+                return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 }

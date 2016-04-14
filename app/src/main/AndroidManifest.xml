@@ -19,8 +19,9 @@
         </activity>
         <activity android:name=".LogIn" />
         <activity android:name=".MainActivity" />
+        <activity android:name=".Search"/>
         <activity android:name=".BookReserve" />
-        <activity android:name=".Search"></activity>
+
     </application>
 
 </manifest>

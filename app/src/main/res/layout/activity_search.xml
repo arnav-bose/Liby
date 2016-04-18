@@ -3,24 +3,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimary"
     tools:context="com.example.arnavbose.libyv2.Search">
 
+    <include android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
     <EditText
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
+        android:layout_width="300dp"
         android:id="@+id/editTextSearch"
-        android:paddingTop="30dp" />
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_height="50dp"
+        android:padding="10dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/edit_text_style"
+        android:textCursorDrawable="@drawable/cursor"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Search"
         android:id="@+id/buttonSearch"
-        android:padding="16dp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_marginRight="8dp"
         android:onClick="onClickSearch"
-        android:layout_alignBottom="@+id/editTextSearch"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/button_style"/>
 
     <RadioGroup
         android:layout_height="wrap_content"
@@ -50,12 +59,21 @@
             android:checked="false" />
     </RadioGroup>
 
+    <View
+        android:id="@+id/viewLineSearch"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@id/radioGroup"
+        android:background="#000000"
+        android:layout_centerHorizontal="true"/>
+
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recyclerViewSearch"
         android:background="@color/colorAccent"
-        android:layout_below="@+id/radioGroup">
+        android:layout_below="@+id/viewLineSearch"
+        android:layout_marginTop="8dp">
 
     </android.support.v7.widget.RecyclerView>
 

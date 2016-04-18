@@ -39,7 +39,6 @@
                 android:layout_marginLeft="0dp"
                 android:layout_centerHorizontal="true"
                 android:paddingLeft="10dp"
-                android:editable="true"
                 android:textCursorDrawable="@null" />
 
             <EditText

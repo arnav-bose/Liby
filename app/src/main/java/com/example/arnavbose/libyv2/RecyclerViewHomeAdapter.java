@@ -14,20 +14,19 @@ import java.util.ArrayList;
 /**
  * Created by arnavbose on 14-02-2016.
  */
-public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHomeAdapter.DataObjectHolder> {
+public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHomeAdapter.RecyclerViewHolder> {
+
     private ArrayList<HomeDataSet> mDataset;
     private static MyClickListener myClickListener;
 
-    public static class DataObjectHolder extends RecyclerView.ViewHolder
-            implements View
-            .OnClickListener {
+    public static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         ImageView bookIcon;
         TextView bookTitle;
         TextView bookAuthor;
         TextView bookAvailable;
         CardView cardViewNewArrivals;
 
-        public DataObjectHolder(View itemView) {
+        public RecyclerViewHolder(View itemView) {
             super(itemView);
             bookIcon = (ImageView) itemView.findViewById(R.id.bookIcon);
             bookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
@@ -52,17 +51,15 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
     }
 
     @Override
-    public DataObjectHolder onCreateViewHolder(ViewGroup parent,
-                                               int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.home_card_row_layout, parent, false);
+    public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        DataObjectHolder dataObjectHolder = new DataObjectHolder(view);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_card_row_layout, parent, false);
+        RecyclerViewHolder dataObjectHolder = new RecyclerViewHolder(view);
         return dataObjectHolder;
     }
 
     @Override
-    public void onBindViewHolder(DataObjectHolder holder, int position) {
+    public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         holder.bookIcon.setImageResource(mDataset.get(position).getmImage());
         holder.bookTitle.setText(mDataset.get(position).getmText1());
         holder.bookAuthor.setText(mDataset.get(position).getmText2());
@@ -71,21 +68,21 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
         holder.cardViewNewArrivals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), BookReserve.class);
+                Intent i = new Intent(v.getContext(), BookDetails.class);
                 v.getContext().startActivity(i);
             }
         });
     }
 
-    public void addItem(HomeDataSet dataObj, int index) {
-        mDataset.add(index, dataObj);
-        notifyItemInserted(index);
-    }
-
-    public void deleteItem(int index) {
-        mDataset.remove(index);
-        notifyItemRemoved(index);
-    }
+//    public void addItem(HomeDataSet dataObj, int index) {
+//        mDataset.add(index, dataObj);
+//        notifyItemInserted(index);
+//    }
+//
+//    public void deleteItem(int index) {
+//        mDataset.remove(index);
+//        notifyItemRemoved(index);
+//    }
 
     @Override
     public int getItemCount() {

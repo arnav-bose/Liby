@@ -13,6 +13,6 @@
         android:startColor="#C8C8C8"
         android:type="linear" />
 
-    <corners android:radius="5dp" />
+    <corners android:radius="1dp" />
 
 </shape>

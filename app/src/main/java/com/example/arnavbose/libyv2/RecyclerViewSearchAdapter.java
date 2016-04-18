@@ -1,12 +1,12 @@
 package com.example.arnavbose.libyv2;
 
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 /**
@@ -14,7 +14,32 @@ import java.util.ArrayList;
  */
 public class RecyclerViewSearchAdapter extends RecyclerView.Adapter <RecyclerViewSearchAdapter.RecyclerViewHolder> {
 
-    ArrayList<DataSetSearch> arrayList = new ArrayList<>();
+    private ArrayList<DataSetSearch> arrayList = new ArrayList<>();
+    private static MyClickListener myClickListener;
+
+    public static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+
+        TextView title, author, biblioNumber;
+        CardView cardViewSearch;
+
+        public RecyclerViewHolder(View view){
+            super(view);
+            title = (TextView)view.findViewById(R.id.textViewSearchTitle);
+            author = (TextView)view.findViewById(R.id.textViewSearchAuthor);
+            biblioNumber = (TextView)view.findViewById(R.id.textViewSearchBiblioNumber);
+            cardViewSearch = (CardView)view.findViewById(R.id.searchCardViewLayout);
+            view.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            myClickListener.onItemClick(getAdapterPosition(), v);
+        }
+    }
+
+    public void setOnItemClickListener(MyClickListener myClickListener) {
+        this.myClickListener = myClickListener;
+    }
 
     public RecyclerViewSearchAdapter(ArrayList<DataSetSearch> arrayList){
         this.arrayList = arrayList;
@@ -30,10 +55,18 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter <RecyclerVie
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-
         DataSetSearch dataSetSearch = arrayList.get(position);
         holder.title.setText(dataSetSearch.getmTitle());
         holder.author.setText(dataSetSearch.getmAuthor());
+        holder.biblioNumber.setText(dataSetSearch.getmBiblioNumber());
+
+        holder.cardViewSearch.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                Intent i = new Intent(v.getContext(), BookDetails.class);
+                v.getContext().startActivity(i);
+            }
+        });
 
     }
 
@@ -42,15 +75,7 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter <RecyclerVie
         return arrayList.size();
     }
 
-    public static class RecyclerViewHolder extends RecyclerView.ViewHolder{
-
-        TextView title, author;
-
-        public RecyclerViewHolder(View view){
-            super(view);
-            title = (TextView)view.findViewById(R.id.textViewSearchTitle);
-            author = (TextView)view.findViewById(R.id.textViewSearchAuthor);
-
-        }
+    public interface MyClickListener {
+        public void onItemClick(int position, View v);
     }
 }

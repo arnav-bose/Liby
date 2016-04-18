@@ -13,7 +13,7 @@ print "Content-type: text/plain\n\n";
 my $query = new CGI;
 #print $query->header("text/plain");
 my $title = $query->param('title');
-#my $name = "Eragon";
+#my $title = "Korean";
 
 my $driver = "mysql";
 my $database = "koha_nulibrary";
@@ -24,7 +24,7 @@ my $password = "1234";
 
 my $dbh = DBI->connect($dsn, $userid, $password ) or die $DBI::errstr;
 
-$query = "SELECT title, author FROM biblio WHERE title like '$title'";
+$query = "SELECT title, author FROM biblio WHERE title like '%$title%'";
 #my $query = "SELECT $primary_key, title, author FROM biblio ";
 
 my $sth = $dbh->prepare($query);

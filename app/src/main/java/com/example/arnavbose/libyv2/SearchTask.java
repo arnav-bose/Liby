@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,6 +30,7 @@ import android.os.AsyncTask;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -45,6 +47,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by arnavbose on 15-04-2016.
@@ -72,16 +75,15 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
         recyclerViewSearch.setHasFixedSize(true);
         adapterSearch = new RecyclerViewSearchAdapter(arrayList);
         recyclerViewSearch.setAdapter(adapterSearch);
-
-
     }
 
     @Override
     protected Void doInBackground(String... params) {
-        String retrieve_url = "http://192.168.43.164/cgi-bin/search.pl";
+        String retrieve_url = "http://10.0.2.2/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
         String method = params[0];
         if (method.equals("Search")) {
             String titleSearch = params[1];
+            String type = params[2];
             try {
                 URL url = new URL(retrieve_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -92,7 +94,9 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
                 String data =
-                        URLEncoder.encode("title", "UTF-8") + "=" + URLEncoder.encode(titleSearch, "UTF-8");
+                       URLEncoder.encode("text", "UTF-8") + "=" + URLEncoder.encode(titleSearch, "UTF-8") + "&" +
+                        URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8");
+//                        URLEncoder.encode("title", "UTF-8") + "=" + URLEncoder.encode(titleSearch, "UTF-8");
 
                 bufferedWriter.write(data);
                 bufferedWriter.flush();
@@ -100,25 +104,28 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
                 outputStream.close();
 
                 InputStream inputStream = httpURLConnection.getInputStream();
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "iso-8859-1"));
+                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
                 String response = "";
                 String line = "";
 
-                while ((line = bufferedReader.readLine()) != null) {
+                while((line = bufferedReader.readLine()) != null) {
                     response += line;
                 }
                 bufferedReader.close();
+
                 inputStream.close();
                 httpURLConnection.disconnect();
 
                 //JSON Parsing
-                JSONObject reader = new JSONObject(response);
-                JSONObject biblioNumber = reader.getJSONObject(titleSearch);
-                for (int i = 0; i < biblioNumber.length() - 1; i++) {
-                    String jsonTitle = biblioNumber.getString("title");
-                    String jsonAuthor = biblioNumber.getString("author");
-                    DataSetSearch dataSetSearch = new DataSetSearch(jsonTitle, jsonAuthor);
-                    Log.d("ARNAV", jsonTitle + " : " + jsonAuthor);
+                JSONObject parentObject = new JSONObject(response);
+                JSONArray parentArray = parentObject.getJSONArray("Books");
+                for(int i = 0; i < parentArray.length(); i++){
+                    JSONObject finalObject = parentArray.getJSONObject(i);
+                    String jsonTitle = finalObject.getString("title");
+                    String jsonAuthor = finalObject.getString("author");
+                    String jsonBiblioNumber = finalObject.getString("biblionumber");
+                    DataSetSearch dataSetSearch = new DataSetSearch(jsonTitle, jsonAuthor, jsonBiblioNumber);
+                    Log.d("FALCON", jsonTitle + " : " + jsonAuthor);
                     publishProgress(dataSetSearch);
                 }
             } catch (MalformedURLException e) {
@@ -127,6 +134,7 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
                 e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
+                Toast.makeText(contextSearch, "No records Found.", Toast.LENGTH_LONG);
             }
         }
         return null;

@@ -7,10 +7,12 @@ public class DataSetSearch {
 
     private String mTitle;
     private String mAuthor;
+    private String mBiblioNumber;
 
-    public DataSetSearch(String title, String author){
+    public DataSetSearch(String title, String author, String biblioNumber){
         this.mTitle = title;
         this.mAuthor = author;
+        this.mBiblioNumber = biblioNumber;
     }
 
     public String getmTitle() {
@@ -27,5 +29,13 @@ public class DataSetSearch {
 
     public void setmAuthor(String mAuthor) {
         this.mAuthor = mAuthor;
+    }
+
+    public String getmBiblioNumber(){
+        return mBiblioNumber;
+    }
+
+    public void setmBiblioNumber(String mBiblioNumber){
+        this.mBiblioNumber = mBiblioNumber;
     }
 }

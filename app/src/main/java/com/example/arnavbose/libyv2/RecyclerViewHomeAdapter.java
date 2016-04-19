@@ -1,6 +1,7 @@
 package com.example.arnavbose.libyv2;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
     private ArrayList<HomeDataSet> mDataset;
     private static MyClickListener myClickListener;
+    Bundle bundleBookDetails;
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
@@ -25,6 +27,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
         TextView bookTitle;
         TextView bookAuthor;
         TextView bookAvailable;
+        TextView bookBiblioNumber;
         CardView cardViewNewArrivals;
 
         public RecyclerViewHolder(View itemView) {
@@ -33,6 +36,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
             bookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
             bookAuthor = (TextView) itemView.findViewById(R.id.bookAuthor);
             bookAvailable = (TextView) itemView.findViewById(R.id.bookAvailable);
+            bookBiblioNumber = (TextView)itemView.findViewById(R.id.textViewBiblioNumberHome);
             cardViewNewArrivals = (CardView) itemView.findViewById(R.id.homeCardViewLayout);
             itemView.setOnClickListener(this);
         }
@@ -61,15 +65,22 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
+        HomeDataSet homeDataSet = mDataset.get(position);
         holder.bookIcon.setImageResource(mDataset.get(position).getmImage());
         holder.bookTitle.setText(mDataset.get(position).getmText1());
         holder.bookAuthor.setText(mDataset.get(position).getmText2());
         holder.bookAvailable.setText(mDataset.get(position).getmText3());
+        holder.bookBiblioNumber.setText((mDataset.get(position).getmText4()));
+        final String biblionumberBookDetails = homeDataSet.getmText4();
+
 
         holder.cardViewNewArrivals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(), BookDetails.class);
+                bundleBookDetails = new Bundle();
+                bundleBookDetails.putString("biblioNumberBookDetails", biblionumberBookDetails);
+                i.putExtras(bundleBookDetails);
                 v.getContext().startActivity(i);
             }
         });

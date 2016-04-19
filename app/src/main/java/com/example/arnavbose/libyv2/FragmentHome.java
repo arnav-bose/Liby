@@ -40,7 +40,7 @@ public class FragmentHome extends Fragment {
         ArrayList results = new ArrayList<HomeDataSet>();
         for (int index = 0; index < 20; index++) {
             HomeDataSet object = new HomeDataSet(R.drawable.liby_logo, "<Title " + index + ">",
-                    "<Author " + index + ">", "Available: 3");
+                    "<Author " + index + ">", "Available: 3", "<BiblioNumber>");
             results.add(index, object);
         }
         return results;

@@ -9,12 +9,14 @@ public class HomeDataSet {
     private String mText1;
     private String mText2;
     private String mText3;
+    private String mText4;
 
-    HomeDataSet(int image, String text1, String text2, String text3){
+    HomeDataSet(int image, String text1, String text2, String text3, String text4){
         mImage = image;
         mText1 = text1;
         mText2 = text2;
         mText3 = text3;
+        mText4 = text4;
     }
 
     public int getmImage(){
@@ -47,5 +49,13 @@ public class HomeDataSet {
 
     public void setmText3(String mText3){
         this.mText3 = mText3;
+    }
+
+    public String getmText4(){
+        return mText4;
+    }
+
+    public void setmText4(String mText4){
+        this.mText4 = mText4;
     }
 }

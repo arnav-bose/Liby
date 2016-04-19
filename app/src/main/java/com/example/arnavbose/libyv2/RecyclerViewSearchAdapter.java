@@ -1,8 +1,12 @@
 package com.example.arnavbose.libyv2;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,11 +20,13 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter <RecyclerVie
 
     private ArrayList<DataSetSearch> arrayList = new ArrayList<>();
     private static MyClickListener myClickListener;
+    Bundle bundleBookDetails;
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView title, author, biblioNumber;
         CardView cardViewSearch;
+        String biblioNumberBookDetails;
 
         public RecyclerViewHolder(View view){
             super(view);
@@ -29,6 +35,9 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter <RecyclerVie
             biblioNumber = (TextView)view.findViewById(R.id.textViewSearchBiblioNumber);
             cardViewSearch = (CardView)view.findViewById(R.id.searchCardViewLayout);
             view.setOnClickListener(this);
+
+
+
         }
 
         @Override
@@ -59,11 +68,16 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter <RecyclerVie
         holder.title.setText(dataSetSearch.getmTitle());
         holder.author.setText(dataSetSearch.getmAuthor());
         holder.biblioNumber.setText(dataSetSearch.getmBiblioNumber());
+        final String biblionumberBookDetails = dataSetSearch.getmBiblioNumber();
 
         holder.cardViewSearch.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
+
                 Intent i = new Intent(v.getContext(), BookDetails.class);
+                bundleBookDetails = new Bundle();
+                bundleBookDetails.putString("biblioNumberBookDetails", biblionumberBookDetails);
+                i.putExtras(bundleBookDetails);
                 v.getContext().startActivity(i);
             }
         });

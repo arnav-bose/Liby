@@ -3,6 +3,7 @@ package com.example.arnavbose.libyv2;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -24,30 +25,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-import android.app.Activity;
-import android.content.Context;
-import android.os.AsyncTask;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.widget.Toast;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 /**
  * Created by arnavbose on 15-04-2016.
@@ -63,13 +42,13 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
 
     SearchTask(Context context) {
         this.contextSearch = context;
-        activity = (Activity)context;
+        activity = (Activity) context;
     }
 
     @Override
     protected void onPreExecute() {
 
-        recyclerViewSearch = (RecyclerView)activity.findViewById(R.id.recyclerViewSearch);
+        recyclerViewSearch = (RecyclerView) activity.findViewById(R.id.recyclerViewSearch);
         layoutManagerSearch = new LinearLayoutManager(contextSearch);
         recyclerViewSearch.setLayoutManager(layoutManagerSearch);
         recyclerViewSearch.setHasFixedSize(true);
@@ -94,8 +73,8 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
                 String data =
-                       URLEncoder.encode("text", "UTF-8") + "=" + URLEncoder.encode(titleSearch, "UTF-8") + "&" +
-                        URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8");
+                        URLEncoder.encode("text", "UTF-8") + "=" + URLEncoder.encode(titleSearch, "UTF-8") + "&" +
+                                URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8");
 //                        URLEncoder.encode("title", "UTF-8") + "=" + URLEncoder.encode(titleSearch, "UTF-8");
 
                 bufferedWriter.write(data);
@@ -108,7 +87,7 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
                 String response = "";
                 String line = "";
 
-                while((line = bufferedReader.readLine()) != null) {
+                while ((line = bufferedReader.readLine()) != null) {
                     response += line;
                 }
                 bufferedReader.close();
@@ -119,7 +98,7 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
                 //JSON Parsing
                 JSONObject parentObject = new JSONObject(response);
                 JSONArray parentArray = parentObject.getJSONArray("Books");
-                for(int i = 0; i < parentArray.length(); i++){
+                for (int i = 0; i < parentArray.length(); i++) {
                     JSONObject finalObject = parentArray.getJSONObject(i);
                     String jsonTitle = finalObject.getString("title");
                     String jsonAuthor = finalObject.getString("author");

@@ -125,7 +125,7 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
                     String jsonAuthor = finalObject.getString("author");
                     String jsonBiblioNumber = finalObject.getString("biblionumber");
                     DataSetSearch dataSetSearch = new DataSetSearch(jsonTitle, jsonAuthor, jsonBiblioNumber);
-                    Log.d("FALCON", jsonTitle + " : " + jsonAuthor);
+                    Log.d("FALCON", jsonBiblioNumber + " : " + jsonTitle + " : " + jsonAuthor);
                     publishProgress(dataSetSearch);
                 }
             } catch (MalformedURLException e) {

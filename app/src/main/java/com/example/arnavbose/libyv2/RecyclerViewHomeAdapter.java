@@ -20,6 +20,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
     private static MyClickListener myClickListener;
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         ImageView bookIcon;
         TextView bookTitle;
         TextView bookAuthor;
@@ -92,5 +93,4 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
     public interface MyClickListener {
         public void onItemClick(int position, View v);
     }
-
 }

@@ -27,7 +27,6 @@ public class LogIn extends AppCompatActivity {
             String method = "Login";
             LoginTask loginTask = new LoginTask(LogIn.this);
             loginTask.execute(method, username, password);
-            finish();
         }
         else if(username.equals("") || password.equals("")){
             Toast.makeText(this, "Please Enter All The Fields", Toast.LENGTH_SHORT).show();

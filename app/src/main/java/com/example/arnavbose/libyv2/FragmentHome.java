@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,13 @@ public class FragmentHome extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         mAdapter = new RecyclerViewHomeAdapter(getHomeDataSet());
         mRecyclerView.setAdapter(mAdapter);
+
+        Bundle bundleLogin = getActivity().getIntent().getExtras();
+        String borrowerNumber = bundleLogin.getString("borrowerNumber");
+        String firstName = bundleLogin.getString("firstName");
+        String lastName = bundleLogin.getString("lastName");
+
+        Toast.makeText(getContext(), "Welcome " + firstName + " " + lastName, Toast.LENGTH_LONG).show();
 
         return view;
     }

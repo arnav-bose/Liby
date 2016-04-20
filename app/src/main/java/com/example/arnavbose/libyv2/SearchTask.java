@@ -58,13 +58,13 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
 
     @Override
     protected Void doInBackground(String... params) {
-        String retrieve_url = "http://10.0.2.2/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
+        String search_url = "http://10.0.2.2/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
         String method = params[0];
         if (method.equals("Search")) {
             String titleSearch = params[1];
             String type = params[2];
             try {
-                URL url = new URL(retrieve_url);
+                URL url = new URL(search_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);

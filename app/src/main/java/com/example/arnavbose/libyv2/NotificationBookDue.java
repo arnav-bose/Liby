@@ -1,10 +1,14 @@
 package com.example.arnavbose.libyv2;
 
+import org.joda.time.DateTime;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Iterator;
 
 public class NotificationBookDue {
@@ -35,12 +39,27 @@ public class NotificationBookDue {
                 System.out.println(key);
                 String title = jsonObject.getJSONObject(key).getString("title");
                 System.out.println(title);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                DateTime today = new DateTime(new Date());
+                DateTime due = new DateTime(formatter.parse(key));
+                DateTime dueMinusOne = due.minusDays(1);
+                boolean isAfterDueMinusOne = today.isAfter(dueMinusOne);
+                boolean isBeforeDue = today.isBefore(due);
+                System.out.println(isAfterDueMinusOne);
+                System.out.println(isBeforeDue);
+                if (isAfterDueMinusOne && isBeforeDue) {
+                    System.out.println("Due Date Reminder!");
+                } else {
+                    System.out.println("Time is still left");
+                }
             }
 
 
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
             e.printStackTrace();
         }
     }

@@ -1,0 +1,43 @@
+{
+  "project_info": {
+    "project_id": "liby-dfc34",
+    "project_number": "60108799776",
+    "name": "Liby"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:60108799776:android:fedf090a37417383",
+        "client_id": "android:com.example.arnavbose.libyv2",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.example.arnavbose.libyv2",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

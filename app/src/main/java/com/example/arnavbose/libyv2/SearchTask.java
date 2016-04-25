@@ -3,7 +3,6 @@ package com.example.arnavbose.libyv2;
 import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -58,7 +57,7 @@ public class SearchTask extends AsyncTask<String, DataSetSearch, Void> {
 
     @Override
     protected Void doInBackground(String... params) {
-        String search_url = "http://10.0.2.2/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
+        String search_url = "http://192.168.43.140/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
         String method = params[0];
         if (method.equals("Search")) {
             String titleSearch = params[1];

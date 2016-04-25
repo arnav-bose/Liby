@@ -34,13 +34,6 @@ public class FragmentHome extends Fragment {
         mAdapter = new RecyclerViewHomeAdapter(getHomeDataSet());
         mRecyclerView.setAdapter(mAdapter);
 
-        Bundle bundleLogin = getActivity().getIntent().getExtras();
-        String borrowerNumber = bundleLogin.getString("borrowerNumber");
-        String firstName = bundleLogin.getString("firstName");
-        String lastName = bundleLogin.getString("lastName");
-
-        Toast.makeText(getContext(), "Welcome " + firstName + " " + lastName, Toast.LENGTH_LONG).show();
-
         return view;
     }
 

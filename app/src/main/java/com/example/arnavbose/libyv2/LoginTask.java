@@ -3,14 +3,28 @@ package com.example.arnavbose.libyv2;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.content.Loader;
 import android.os.AsyncTask;
 import android.os.Bundle;
+=======
+import android.content.IntentFilter;
+import android.content.Loader;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
+>>>>>>> pradumn
 import android.text.style.TtsSpan;
 import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 
+<<<<<<< HEAD
+=======
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+
+>>>>>>> pradumn
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,7 +70,11 @@ public class LoginTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
 
+<<<<<<< HEAD
         String search_url = "http://10.0.2.2/cgi-bin/login.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
+=======
+        String search_url = "http://192.168.43.140/cgi-bin/login.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
+>>>>>>> pradumn
         String method = params[0];
         if (method.equals("Login")) {
             String username = params[1];
@@ -104,6 +122,10 @@ public class LoginTask extends AsyncTask<String, Void, String> {
         return null;
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> pradumn
     @Override
     protected void onProgressUpdate(Void... values) {
         super.onProgressUpdate(values);

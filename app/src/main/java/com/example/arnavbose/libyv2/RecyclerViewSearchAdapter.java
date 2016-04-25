@@ -75,9 +75,6 @@ public class RecyclerViewSearchAdapter extends RecyclerView.Adapter <RecyclerVie
             public void onClick(View v){
 
                 Intent i = new Intent(v.getContext(), BookDetails.class);
-                bundleBookDetails = new Bundle();
-                bundleBookDetails.putString("biblioNumberBookDetails", biblionumberBookDetails);
-                i.putExtras(bundleBookDetails);
                 v.getContext().startActivity(i);
             }
         });

@@ -1,4 +1,4 @@
-package com.example.arnavbose.libyv2;
+package com.example.arnavbose.liby;
 
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.Fragment;
@@ -7,9 +7,9 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 /**
  * Created by arnavbose on 09-02-2016.
  */
-public class ViewPagerAdapterHome extends FragmentStatePagerAdapter {
+public class ViewPageAdapter extends FragmentStatePagerAdapter {
 
-    public ViewPagerAdapterHome(FragmentManager fragmentManager){
+    public ViewPageAdapter(FragmentManager fragmentManager){
         super(fragmentManager);
     }
 

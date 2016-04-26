@@ -1,4 +1,4 @@
-package com.example.arnavbose.libyv2;
+package com.example.arnavbose.liby;
 
 import android.app.IntentService;
 import android.content.Intent;
@@ -37,6 +37,8 @@ public class GCMRegistrationIntentService extends IntentService {
 
             AppData.GCMRegisteration.edit().putBoolean(AppData.SENT_TOKEN_TO_SERVER, true).apply();
 
+
+
         } catch (Exception e) {
             Log.d("ID","Failed to retrieve");
             AppData.GCMRegisteration.edit().putBoolean(AppData.SENT_TOKEN_TO_SERVER, false).apply();
@@ -48,6 +50,8 @@ public class GCMRegistrationIntentService extends IntentService {
 
 
     private void sendRegistrationToServer(String token, String rUserName) {
-       //TODO: Connect to database here.
+        String method = "Send Token";
+        GCMTask gcmTask = new GCMTask(this);
+        gcmTask.execute(method, token, rUserName);
     }
 }

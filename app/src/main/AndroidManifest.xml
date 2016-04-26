@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.arnavbose.libyv2">
+    package="com.example.arnavbose.liby">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
-    <permission android:name="com.example.arnavbose.libyv2.permission.C2D_MESSAGE"
+    <permission android:name="com.example.arnavbose.liby.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
-    <uses-permission android:name="com.example.arnavbose.libyv2.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.example.arnavbose.liby.permission.C2D_MESSAGE" />
 
     <application
         android:allowBackup="true"
@@ -26,7 +26,7 @@
         </receiver>
 
         <service
-            android:name=".GCMListenerService"
+            android:name="com.example.arnavbose.liby.GCMListenerService"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -34,32 +34,32 @@
         </service>
 
         <service
-            android:name=".GCMInstanceIDListener"
+            android:name="com.example.arnavbose.liby.GCMInstanceIDListener"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
 
-        <service android:name=".GCMRegistrationIntentService" />
+        <service android:name="com.example.arnavbose.liby.GCMRegistrationIntentService" />
 
 
 
 
 
-        <activity android:name=".SplashScreen">
+        <activity android:name="com.example.arnavbose.liby.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LogIn" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".Search"
-            android:parentActivityName=".MainActivity"/>
-        <activity android:name=".BookDetails"
-            android:parentActivityName=".MainActivity"/>
+        <activity android:name="com.example.arnavbose.liby.LogIn" />
+        <activity android:name="com.example.arnavbose.liby.MainActivity" />
+        <activity android:name="com.example.arnavbose.liby.Search"
+            android:parentActivityName="com.example.arnavbose.liby.MainActivity"/>
+        <activity android:name="com.example.arnavbose.liby.BookDetails"
+            android:parentActivityName="com.example.arnavbose.liby.MainActivity"/>
 
     </application>
 

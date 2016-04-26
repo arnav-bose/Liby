@@ -8,10 +8,10 @@
     {
       "client_info": {
         "mobilesdk_app_id": "1:60108799776:android:fedf090a37417383",
-        "client_id": "android:com.example.arnavbose.libyv2",
+        "client_id": "android:com.example.arnavbose.liby",
         "client_type": 1,
         "android_client_info": {
-          "package_name": "com.example.arnavbose.libyv2",
+          "package_name": "com.example.arnavbose.liby",
           "certificate_hash": []
         }
       },

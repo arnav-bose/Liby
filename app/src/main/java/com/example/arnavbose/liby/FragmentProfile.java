@@ -57,8 +57,6 @@ public class FragmentProfile extends Fragment {
         tabLayoutProfile.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPagerProfile));
         viewPagerProfile.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayoutProfile));
 
-
-
         return view;
 
     }

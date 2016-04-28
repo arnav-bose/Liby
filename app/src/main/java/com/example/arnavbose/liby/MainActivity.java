@@ -36,15 +36,15 @@ public class MainActivity extends AppCompatActivity {
         viewPagerMain.setAdapter(viewPagerAdapterMain);
 
         final TabLayout.Tab home = tabLayoutMain.newTab();
-        final TabLayout.Tab social = tabLayoutMain.newTab();
+        final TabLayout.Tab notes = tabLayoutMain.newTab();
         final TabLayout.Tab profile = tabLayoutMain.newTab();
 
         home.setIcon(R.drawable.ic_home_variant_white_48dp);
         profile.setIcon(R.drawable.ic_account_grey600_48dp);
-        social.setIcon(R.drawable.ic_star_grey600_48dp);
+        notes.setIcon(R.drawable.ic_star_grey600_48dp);
 
         tabLayoutMain.addTab(home, 0);
-        tabLayoutMain.addTab(social, 1);
+        tabLayoutMain.addTab(notes, 1);
         tabLayoutMain.addTab(profile, 2);
 
         tabLayoutMain.setTabTextColors(ContextCompat.getColorStateList(this, R.color.tab_selector));
@@ -70,17 +70,17 @@ public class MainActivity extends AppCompatActivity {
                          */
                         home.setIcon(R.drawable.ic_home_variant_white_48dp);
                         profile.setIcon(R.drawable.ic_account_grey600_48dp);
-                        social.setIcon(R.drawable.ic_star_grey600_48dp);
+                        notes.setIcon(R.drawable.ic_star_grey600_48dp);
                         break;
                     case 1:
                         home.setIcon(R.drawable.ic_home_variant_grey600_48dp);
-                        social.setIcon(R.drawable.ic_star_white_48dp);
+                        notes.setIcon(R.drawable.ic_star_white_48dp);
                         profile.setIcon(R.drawable.ic_account_grey600_48dp);
                         break;
                     case 2:
                         home.setIcon(R.drawable.ic_home_variant_grey600_48dp);
                         profile.setIcon(R.drawable.ic_account_white_48dp);
-                        social.setIcon(R.drawable.ic_star_grey600_48dp);
+                        notes.setIcon(R.drawable.ic_star_grey600_48dp);
                         break;
                 }
             }
@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case 1:
                         viewPagerMain.setCurrentItem(1);
-                        toolbar.setTitle("Social");
+                        toolbar.setTitle("Notes");
                         break;
                     case 2:
                         viewPagerMain.setCurrentItem(2);

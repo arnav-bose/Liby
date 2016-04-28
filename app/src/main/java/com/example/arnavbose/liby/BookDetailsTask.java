@@ -42,7 +42,7 @@ public class BookDetailsTask extends AsyncTask<String, Void, String[]> {
 
     @Override
     protected String[] doInBackground(String... params) {
-        String book_details_url = "http://10.0.2.2/cgi-bin/bookdetails.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
+        String book_details_url = "http://192.168.99.1/cgi-bin/bookdetails.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
         String method = params[0];
         if (method.equals("Book Details")) {
             String biblionumber = params[1];

@@ -35,10 +35,10 @@ public class FragmentHome extends Fragment {
         return view;
     }
 
-    private ArrayList<HomeDataSet> getHomeDataSet() {
-        ArrayList results = new ArrayList<HomeDataSet>();
+    private ArrayList<DataSetHome> getHomeDataSet() {
+        ArrayList results = new ArrayList<DataSetHome>();
         for (int index = 0; index < 20; index++) {
-            HomeDataSet object = new HomeDataSet(R.drawable.liby_logo, "<Title " + index + ">",
+            DataSetHome object = new DataSetHome(R.drawable.liby_logo, "<Title " + index + ">",
                     "<Author " + index + ">", "Available: 3", "<BiblioNumber>");
             results.add(index, object);
         }

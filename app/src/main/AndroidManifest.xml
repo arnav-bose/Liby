@@ -3,6 +3,7 @@
     package="com.example.arnavbose.liby">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <permission android:name="com.example.arnavbose.liby.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
@@ -13,7 +14,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/LibyAppTheme">
 
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"

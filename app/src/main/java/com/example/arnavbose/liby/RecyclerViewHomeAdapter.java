@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHomeAdapter.RecyclerViewHolder> {
 
-    private ArrayList<HomeDataSet> mDataset;
+    private ArrayList<DataSetHome> mDataset;
     private static MyClickListener myClickListener;
     Bundle bundleBookDetails;
 
@@ -51,7 +51,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
         this.myClickListener = myClickListener;
     }
 
-    public RecyclerViewHomeAdapter(ArrayList<HomeDataSet> myDataset) {
+    public RecyclerViewHomeAdapter(ArrayList<DataSetHome> myDataset) {
         mDataset = myDataset;
     }
 
@@ -65,7 +65,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
-        HomeDataSet homeDataSet = mDataset.get(position);
+        DataSetHome homeDataSet = mDataset.get(position);
         holder.bookIcon.setImageResource(mDataset.get(position).getmImage());
         holder.bookTitle.setText(mDataset.get(position).getmText1());
         holder.bookAuthor.setText(mDataset.get(position).getmText2());
@@ -86,7 +86,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
         });
     }
 
-//    public void addItem(HomeDataSet dataObj, int index) {
+//    public void addItem(DataSetHome dataObj, int index) {
 //        mDataset.add(index, dataObj);
 //        notifyItemInserted(index);
 //    }

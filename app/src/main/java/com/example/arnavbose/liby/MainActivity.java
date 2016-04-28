@@ -15,9 +15,9 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity {
 
     Toolbar toolbar;
-    ViewPager viewPager;
-    ViewPageAdapter viewPageAdapter;
-    TabLayout tabLayout;
+    ViewPager viewPagerMain;
+    ViewPagerAdapterHome viewPagerAdapterMain;
+    TabLayout tabLayoutMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,34 +27,34 @@ public class MainActivity extends AppCompatActivity {
 
         //Toolbar, TabLayout, ViewPager
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
-        viewPager = (ViewPager) findViewById(R.id.viewPager);
+        tabLayoutMain = (TabLayout) findViewById(R.id.tabLayoutMain);
+        viewPagerMain = (ViewPager) findViewById(R.id.viewPager);
         setSupportActionBar(toolbar);
 
         //View Pager Adapter
-        viewPageAdapter = new ViewPageAdapter(getSupportFragmentManager());
-        viewPager.setAdapter(viewPageAdapter);
+        viewPagerAdapterMain = new ViewPagerAdapterHome(getSupportFragmentManager());
+        viewPagerMain.setAdapter(viewPagerAdapterMain);
 
-        final TabLayout.Tab home = tabLayout.newTab();
-        final TabLayout.Tab social = tabLayout.newTab();
-        final TabLayout.Tab profile = tabLayout.newTab();
+        final TabLayout.Tab home = tabLayoutMain.newTab();
+        final TabLayout.Tab social = tabLayoutMain.newTab();
+        final TabLayout.Tab profile = tabLayoutMain.newTab();
 
         home.setIcon(R.drawable.ic_home_variant_white_48dp);
         profile.setIcon(R.drawable.ic_account_grey600_48dp);
         social.setIcon(R.drawable.ic_star_grey600_48dp);
 
-        tabLayout.addTab(home, 0);
-        tabLayout.addTab(social, 1);
-        tabLayout.addTab(profile, 2);
+        tabLayoutMain.addTab(home, 0);
+        tabLayoutMain.addTab(social, 1);
+        tabLayoutMain.addTab(profile, 2);
 
-        tabLayout.setTabTextColors(ContextCompat.getColorStateList(this, R.color.tab_selector));
-        tabLayout.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.colorAccent));
+        tabLayoutMain.setTabTextColors(ContextCompat.getColorStateList(this, R.color.tab_selector));
+        tabLayoutMain.setSelectedTabIndicatorColor(ContextCompat.getColor(this, R.color.colorAccent));
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayoutMain.setOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPagerMain));
+        viewPagerMain.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayoutMain));
 
         //Icon Change For Selected Tab
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewPagerMain.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -92,24 +92,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
         //Title Change For Selected Tab
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayoutMain.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 switch (tab.getPosition()) {
                     case 0:
-                        viewPager.setCurrentItem(0);
+                        viewPagerMain.setCurrentItem(0);
                         toolbar.setTitle("Home");
                         break;
                     case 1:
-                        viewPager.setCurrentItem(1);
+                        viewPagerMain.setCurrentItem(1);
                         toolbar.setTitle("Social");
                         break;
                     case 2:
-                        viewPager.setCurrentItem(2);
+                        viewPagerMain.setCurrentItem(2);
                         toolbar.setTitle("Profile");
                         break;
                     default:
-                        viewPager.setCurrentItem(tab.getPosition());
+                        viewPagerMain.setCurrentItem(tab.getPosition());
                         toolbar.setTitle("Liby");
                         break;
                 }

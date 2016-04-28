@@ -7,25 +7,25 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 /**
  * Created by arnavbose on 09-02-2016.
  */
-public class ViewPageAdapter extends FragmentStatePagerAdapter {
+public class ViewPagerAdapterProfile extends FragmentStatePagerAdapter {
 
-    public ViewPageAdapter(FragmentManager fragmentManager){
+    public ViewPagerAdapterProfile(FragmentManager fragmentManager){
         super(fragmentManager);
     }
 
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            FragmentHome home = new FragmentHome();
-            return home;
+            FragmentStatus status = new FragmentStatus();
+            return status;
         }
         else if(position == 1){
-            FragmentSocial social = new FragmentSocial();
-            return social;
+            FragmentHistory history = new FragmentHistory();
+            return history;
         }
         else {
-            FragmentProfile profile = new FragmentProfile();
-            return profile;
+            FragmentWishlist wishlist = new FragmentWishlist();
+            return wishlist;
         }
     }
 

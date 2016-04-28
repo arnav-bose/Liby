@@ -1,0 +1,36 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.arnavbose.liby.FragmentWishlist">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Wishlist:"
+        android:id="@+id/labelWishlist"
+        android:padding="16dp"
+        android:layout_gravity="left|top" />
+
+    <EditText
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/labelWishlist"
+        android:id="@+id/editTextWishlist"
+        android:layout_marginTop="8dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add To Wishlist"
+        android:id="@+id/buttonWishlist"
+         android:layout_toEndOf="@+id/editTextWishlist"
+        android:layout_below="@+id/labelWishlist"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/editTextWishlist"
+        android:layout_marginTop="8dp"/>
+</RelativeLayout>

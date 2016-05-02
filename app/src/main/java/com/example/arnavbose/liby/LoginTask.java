@@ -3,7 +3,9 @@ package com.example.arnavbose.liby;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -52,7 +54,7 @@ public class LoginTask extends AsyncTask<String, Void, String> {
     @Override
     protected String doInBackground(String... params) {
 
-        String search_url = "http://192.168.99.1/cgi-bin/login.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
+        String search_url = "http://10.0.2.2/cgi-bin/login.pl"; //10.0.2.2 for Emulator and 192.168.99.101 for Connectify
         String method = params[0];
         if (method.equals("Login")) {
             String username = params[1];
@@ -125,9 +127,16 @@ public class LoginTask extends AsyncTask<String, Void, String> {
                 jsonLastName = finalObject.getString("surname");
                 jsonBorrowerNumber = finalObject.getString("borrowernumber");
 
+                AppData.LOGIN_CHECK = true;
+                AppData.myData = PreferenceManager.getDefaultSharedPreferences(contextLogin);
+                SharedPreferences.Editor editor = AppData.myData.edit();
+                editor.putString("borrowerNumber", jsonBorrowerNumber);
+                editor.putString("name", jsonFirstName + " " + jsonLastName);
+                editor.putBoolean("LOGIN_CHECK", AppData.LOGIN_CHECK);
+                editor.apply();
+
                 Intent i = new Intent(contextLogin, MainActivity.class);
                 contextLogin.startActivity(i);
-                login = true;
                 activityLogin.finish();
 
             }catch (JSONException e) {

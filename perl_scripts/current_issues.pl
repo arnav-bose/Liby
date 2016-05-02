@@ -11,14 +11,15 @@ print "Content-type: text/plain\n\n";
 my $query = new CGI;
 
 
-my $bn = $query->param('borrowernumber');
+#my $bn = $query->param('borrowernumber');
+my $bn = 1;
 
 
 my $driver = "mysql";
-my $database = "koha_library";
+my $database = "koha_nulibrary";
 my $dsn = "DBI:$driver:database=$database";
 my $userid = "root";
-my $password = "qwerty";
+my $password = "";
 
 
 my $dbh = DBI->connect($dsn, $userid, $password ) or die $DBI::errstr;
@@ -35,7 +36,9 @@ my $sth = $dbh->prepare($query);
 $sth->execute() or die $DBI::errstr;
 
 
-my $json = encode_json $sth->fetchall_hashref('title');
+my @row = $sth->fetchall_arrayref({});
+my %a = ('Books' => @row);
+my $json = encode_json \%a;
 print $json;
 
 $sth->finish();

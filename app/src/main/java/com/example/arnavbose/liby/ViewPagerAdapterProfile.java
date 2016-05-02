@@ -23,9 +23,13 @@ public class ViewPagerAdapterProfile extends FragmentStatePagerAdapter {
             FragmentHistory history = new FragmentHistory();
             return history;
         }
-        else {
+        else if(position == 2){
             FragmentWishlist wishlist = new FragmentWishlist();
             return wishlist;
+        }
+        else{
+            FragmentStatus status = new FragmentStatus();
+            return status;
         }
     }
 

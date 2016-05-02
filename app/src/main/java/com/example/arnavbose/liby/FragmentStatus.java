@@ -1,11 +1,14 @@
 package com.example.arnavbose.liby;
 
-
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.ArrayList;
 
 
 /**
@@ -13,17 +16,19 @@ import android.view.ViewGroup;
  */
 public class FragmentStatus extends Fragment {
 
-
-    public FragmentStatus() {
-        // Required empty public constructor
-    }
-
-
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_status, container, false);
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
+        View view = inflater.inflate(R.layout.fragment_status, container, false);
+
+        setRetainInstance(true);
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyData", Context.MODE_PRIVATE);
+        String borrowerNumber = sharedPreferences.getString("borrowerNumber", "");
+
+        String method = "Current Issues";
+        CurrentIssuesTask currentIssuesTask = new CurrentIssuesTask(getContext());
+        currentIssuesTask.execute(method, borrowerNumber);
+
+        return view;
+    }
 }

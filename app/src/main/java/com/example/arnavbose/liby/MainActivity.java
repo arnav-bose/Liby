@@ -2,6 +2,8 @@ package com.example.arnavbose.liby;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -11,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         //Toolbar, TabLayout, ViewPager
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         tabLayoutMain = (TabLayout) findViewById(R.id.tabLayoutMain);
-        viewPagerMain = (ViewPager) findViewById(R.id.viewPager);
+        viewPagerMain = (ViewPager) findViewById(R.id.viewPagerMain);
         setSupportActionBar(toolbar);
 
         //View Pager Adapter
@@ -125,6 +128,16 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        if(AppData.WELCOME_MESSAGE == false) {
+            AppData.myData = PreferenceManager.getDefaultSharedPreferences(this);
+            String name = AppData.myData.getString("name", "");
+
+            Toast.makeText(this, "Welcome " + name, Toast.LENGTH_LONG).show();
+
+            AppData.WELCOME_MESSAGE = true;
+        }
+
     }
 
     @Override
@@ -153,6 +166,17 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_search:
                 startActivity(new Intent(this, Search.class));
                 return true;
+
+            case R.id.logout_button:
+                AppData.LOGIN_CHECK = false;
+                AppData.WELCOME_MESSAGE = false;
+                AppData.myData = PreferenceManager.getDefaultSharedPreferences(this);
+                SharedPreferences.Editor editor = AppData.myData.edit();
+                editor.putBoolean("LOGIN_CHECK", AppData.LOGIN_CHECK);
+                editor.putBoolean("WELCOME_MESSAGE", AppData.WELCOME_MESSAGE);
+                Intent intent = new Intent(MainActivity.this, LogIn.class);
+                startActivity(intent);
+                finish();
         }
         return super.onOptionsItemSelected(item);
     }

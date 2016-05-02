@@ -26,6 +26,7 @@ public class FragmentNotes extends Fragment {
         //NotesTask notesTask = new NotesTask(getContext());
         //notesTask.execute();
 
+        setRetainInstance(true);
         buttonNotes = (Button)view.findViewById(R.id.buttonNotes);
         buttonNotes.setOnClickListener(new View.OnClickListener(){
             @Override

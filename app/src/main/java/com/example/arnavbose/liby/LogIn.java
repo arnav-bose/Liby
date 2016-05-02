@@ -4,6 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -29,25 +31,32 @@ public class LogIn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_log_in);
 
-        mRegistrationBroadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                boolean sentToken = AppData.GCMRegisteration.getBoolean(AppData.SENT_TOKEN_TO_SERVER, false);
-                if (sentToken) {
-                    Toast.makeText(getApplicationContext(), "Data sent to server.", Toast.LENGTH_LONG).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Data not sent to server.", Toast.LENGTH_LONG).show();
+        AppData.myData = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences.Editor editor = AppData.myData.edit();
+        editor.putBoolean("LOGIN_CHECK", AppData.LOGIN_CHECK);
+
+
+            mRegistrationBroadcastReceiver = new BroadcastReceiver() {
+                @Override
+                public void onReceive(Context context, Intent intent) {
+                    boolean sentToken = AppData.GCMRegisteration.getBoolean(AppData.SENT_TOKEN_TO_SERVER, false);
+                    if (sentToken) {
+                        Log.d("FALCON", "Data Sent To Server");
+                    } else {
+                        Log.d("FALCON", "Data NOT Sent To Server");
+                    }
                 }
-            }};
+            };
 
-        registerReceiver();
+            registerReceiver();
 
-        editTextusername = (EditText)findViewById(R.id.editTextUsername);
-        editTextpassword = (EditText)findViewById(R.id.editTextPassword);
+            editTextusername = (EditText) findViewById(R.id.editTextUsername);
+            editTextpassword = (EditText) findViewById(R.id.editTextPassword);
+
     }
 
-    private void registerReceiver(){
-        if(!isReceiverRegistered) {
+    private void registerReceiver() {
+        if (!isReceiverRegistered) {
             LocalBroadcastManager.getInstance(this).registerReceiver(mRegistrationBroadcastReceiver,
                     new IntentFilter(AppData.REGISTRATION_COMPLETE));
             Log.d("Registeration", "Reciever Registered");
@@ -72,22 +81,22 @@ public class LogIn extends AppCompatActivity {
         return true;
     }
 
-    public void onClickLogin(View view){
+    public void onClickLogin(View view) {
 
-        if (checkPlayServices()) {
-            Intent intent = new Intent(getApplicationContext(), GCMRegistrationIntentService.class);
-            startService(intent);
-            Log.d("Registeration", "Registeration Intent Started");
-        }
         username = editTextusername.getText().toString();
         password = editTextpassword.getText().toString();
-        if(!username.equals("") & !password.equals("")){
+        if (!username.equals("") & !password.equals("")) {
             String method = "Login";
             LoginTask loginTask = new LoginTask(LogIn.this);
             loginTask.execute(method, username, password);
-        }
-        else if(username.equals("") || password.equals("")){
-            Toast.makeText(this, "Please Enter All The Fields", Toast.LENGTH_SHORT).show();
+
+            if (checkPlayServices()) {
+                Intent intent = new Intent(getApplicationContext(), GCMRegistrationIntentService.class);
+                startService(intent);
+                Log.d("Registeration", "Registeration Intent Started");
+            } else if (username.equals("") || password.equals("")) {
+                Toast.makeText(this, "Please Enter All The Fields", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

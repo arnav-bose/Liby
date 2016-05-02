@@ -12,10 +12,10 @@ print "Content-type: text/plain\n\n";
 
 my $query = new CGI;
 #print $query->header("text/plain");
-my $title = $query->param('title');
+#my $title = $query->param('title');
 #my $title = "Era";
 
-#my $name = "Eragon";
+my $title = "Eragon";
 
 my $driver = "mysql";
 my $database = "koha_nulibrary";

@@ -39,7 +39,8 @@
                 android:layout_marginLeft="0dp"
                 android:layout_centerHorizontal="true"
                 android:paddingLeft="10dp"
-                android:textCursorDrawable="@null" />
+                android:textCursorDrawable="@null"
+                android:inputType="textNoSuggestions"/>
 
             <EditText
                 android:layout_width="fill_parent"

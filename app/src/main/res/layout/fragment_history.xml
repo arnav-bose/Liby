@@ -11,8 +11,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Books Issued Previously:"
         android:id="@+id/LabelHistory"
-        android:padding="16dp"
-        android:layout_gravity="left|top" />
+        android:padding="16dp" />
 
 
 </RelativeLayout>

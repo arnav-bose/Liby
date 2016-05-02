@@ -1,4 +1,4 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,15 +11,22 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Current Books Issued:"
         android:id="@+id/LabelStatusCurrentBooks"
-        android:padding="16dp"
-        android:layout_gravity="left|top" />
+        android:padding="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Due Date:"
-        android:padding="16dp"
-        android:id="@+id/LabelStatusDueDate"
-        android:layout_gravity="left|center_vertical" />
-</FrameLayout>
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="No Books Issued"
+        android:layout_marginLeft="16dp"
+        android:id="@+id/textViewCurrentIssues"
+        android:layout_below="@+id/LabelStatusCurrentBooks"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclerViewCurrentIssues"
+        android:layout_below="@+id/textViewCurrentIssues"/>
+</RelativeLayout>

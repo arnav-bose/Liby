@@ -1,7 +1,9 @@
 package com.example.arnavbose.liby;
 
 import android.app.IntentService;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
@@ -32,9 +34,12 @@ public class GCMRegistrationIntentService extends IntentService {
 
             Log.d("ID", token);
 
-            //TODO: Change the function according to your need
-            //sendRegistrationToServer(token, rUserName);
-
+            AppData.myData = PreferenceManager.getDefaultSharedPreferences(this);
+            String borrowerNumber = AppData.myData.getString("borrowerNumber", "");
+            Log.d("borrowerNumber",borrowerNumber);
+            Log.d("ID","STARTED");
+            sendRegistrationToServer(token, borrowerNumber);
+            Log.d("ID","CHANGED PREFS");
             AppData.GCMRegisteration.edit().putBoolean(AppData.SENT_TOKEN_TO_SERVER, true).apply();
 
 
@@ -49,9 +54,12 @@ public class GCMRegistrationIntentService extends IntentService {
     }
 
 
-    private void sendRegistrationToServer(String token, String rUserName) {
+    private void sendRegistrationToServer(String token, String borrowerNumber) {
+        Log.d("ID","I AM HERE");
         String method = "Send Token";
-        GCMTask gcmTask = new GCMTask(this);
-        gcmTask.execute(method, token, rUserName);
+        GCMTask gcmTask = new GCMTask();
+        gcmTask.execute(method, token, borrowerNumber);
+        Intent idSent = new Intent(AppData.SENT_TOKEN_TO_SERVER);
+        LocalBroadcastManager.getInstance(this).sendBroadcast(idSent);
     }
 }

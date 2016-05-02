@@ -10,8 +10,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Wishlist:"
         android:id="@+id/labelWishlist"
-        android:padding="16dp"
-        android:layout_gravity="left|top" />
+        android:padding="16dp"/>
 
     <EditText
         android:layout_width="250dp"

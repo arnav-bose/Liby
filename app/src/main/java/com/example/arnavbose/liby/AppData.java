@@ -9,4 +9,9 @@ public class AppData {
     public static SharedPreferences GCMRegisteration;
     public static final String SENT_TOKEN_TO_SERVER = "sentTokenToServer";
     public static final String REGISTRATION_COMPLETE = "registrationComplete";
+    public static boolean LOGIN_CHECK = false;
+    public static boolean WELCOME_MESSAGE = false;
+
+    public static SharedPreferences myData;
+
 }

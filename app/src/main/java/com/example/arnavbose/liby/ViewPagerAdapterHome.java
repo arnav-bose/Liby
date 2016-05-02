@@ -20,8 +20,8 @@ public class ViewPagerAdapterHome extends FragmentStatePagerAdapter {
             return home;
         }
         else if(position == 1){
-            FragmentNotes social = new FragmentNotes();
-            return social;
+            FragmentNotes notes = new FragmentNotes();
+            return notes;
         }
         else {
             FragmentProfile profile = new FragmentProfile();

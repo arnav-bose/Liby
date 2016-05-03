@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Toolbar, TabLayout, ViewPager
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbarMain);
         tabLayoutMain = (TabLayout) findViewById(R.id.tabLayoutMain);
         viewPagerMain = (ViewPager) findViewById(R.id.viewPagerMain);
         setSupportActionBar(toolbar);

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.arnavbose.liby.Search">
 
-    <include android:id="@+id/toolbar"
+    <include android:id="@+id/toolbarMain"
         layout="@layout/toolbar"/>
 
     <EditText

@@ -38,11 +38,11 @@ public class FragmentProfile extends Fragment {
         tabLayoutProfile = (TabLayout)view.findViewById(R.id.tabLayoutProfile);
         viewPagerProfile = (ViewPager)view.findViewById(R.id.viewPagerProfile);
         imageViewProfilePicture = (CircularImageView)view.findViewById(R.id.imageViewProfilePicture);
-        textViewProfileName = (TextView)view.findViewById(R.id.textViewProfileName);
+        //textViewProfileName = (TextView)view.findViewById(R.id.textViewProfileName);
 
-        AppData.myData = PreferenceManager.getDefaultSharedPreferences(getContext());
-        String name = AppData.myData.getString("name", "");
-        textViewProfileName.setText(name);
+//        AppData.myData = PreferenceManager.getDefaultSharedPreferences(getContext());
+//        String name = AppData.myData.getString("name", "");
+//        textViewProfileName.setText(name);
 
         //Tab Layout================================================================
         viewPagerAdapterProfile = new ViewPagerAdapterProfile(getChildFragmentManager());

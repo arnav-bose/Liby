@@ -1,49 +1,54 @@
-<RelativeLayout android:layout_height="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark">
 
-        <RelativeLayout
-            android:background="@color/colorPrimaryDark"
-            android:layout_height="300dp"
-            android:layout_width="match_parent">
+    <RelativeLayout
+        android:id="@+id/relativeLayoutProfileTop"
+        android:layout_width="match_parent"
+        android:layout_height="300dp">
 
-            <com.github.siyamed.shapeimageview.CircularImageView
-                android:id="@+id/imageViewProfilePicture"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:layout_height="150dp"
-                android:layout_width="150dp"
-                android:src="@drawable/blank_profile_picture" />
+    <com.github.siyamed.shapeimageview.CircularImageView
+        android:id="@+id/imageViewProfilePicture"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/blank_profile_picture" />
 
-            <TextView
-                android:id="@+id/textViewProfileName"
-                android:layout_below="@+id/imageViewProfilePicture"
-                android:layout_centerHorizontal="true"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_width="wrap_content"
-                android:text="&lt;Name>"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="@color/colorAccent" />
-
-
-        </RelativeLayout>
-
-    <android.support.design.widget.TabLayout
-        android:background="@color/colorPrimary"
-        android:elevation="2dp"
-        android:id="@+id/tabLayoutProfile"
-        android:layout_below="@+id/toolbarMain"
+    <TextView
+        android:id="@+id/textViewProfileName"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="300dp"
-        android:layout_width="match_parent" />
+        android:layout_below="@+id/imageViewProfilePicture"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:text="&lt;Name>"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/colorAccent" />
+    </RelativeLayout>
 
-    <android.support.v4.view.ViewPager
-        android:background="#FFFFFF"
-        android:id="@+id/viewPagerProfile"
-        android:layout_below="@+id/tabLayoutProfile"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabLayoutProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:elevation="2dp" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPagerProfile"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/tabLayoutProfile"
+            android:background="#FFFFFF" />
+
+    </RelativeLayout>
 
 
-</RelativeLayout>
+</LinearLayout>
+

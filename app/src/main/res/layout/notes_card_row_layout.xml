@@ -43,7 +43,8 @@
                 android:id="@+id/textViewNotesContributer"
                 android:layout_centerVertical="true"
                 android:layout_alignStart="@+id/textViewNotesTitle"
-                android:lines="2"/>
+                android:lines="2"
+                android:layout_alignLeft="@+id/textViewNotesTitle" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -52,7 +53,8 @@
                 android:text="Subject"
                 android:id="@+id/textViewNotesSubject"
                 android:layout_below="@+id/textViewNotesContributer"
-                android:layout_alignStart="@+id/textViewNotesContributer" />
+                android:layout_alignStart="@+id/textViewNotesContributer"
+                android:layout_alignLeft="@+id/textViewNotesContributer" />
 
         </RelativeLayout>
     </android.support.v7.widget.CardView>

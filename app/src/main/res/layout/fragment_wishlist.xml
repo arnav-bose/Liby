@@ -25,7 +25,8 @@
         android:text="Add To Wishlist"
         android:id="@+id/buttonWishlist"
          android:layout_toEndOf="@+id/editTextWishlist"
-        android:layout_below="@+id/labelWishlist"/>
+        android:layout_below="@+id/labelWishlist"
+        android:layout_toRightOf="@+id/editTextWishlist" />
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

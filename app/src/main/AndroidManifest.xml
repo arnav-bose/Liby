@@ -48,19 +48,24 @@
 
 
 
-        <activity android:name="com.example.arnavbose.liby.SplashScreen">
+        <activity android:name="com.example.arnavbose.liby.SplashScreen"
+            android:configChanges="keyboardHidden|orientation|screenLayout">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.arnavbose.liby.LogIn" />
-        <activity android:name="com.example.arnavbose.liby.MainActivity" />
+        <activity android:name="com.example.arnavbose.liby.LogIn"
+            android:configChanges="keyboardHidden|orientation|screenLayout"/>
+        <activity android:name="com.example.arnavbose.liby.MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenLayout"/>
         <activity android:name="com.example.arnavbose.liby.Search"
-            android:parentActivityName="com.example.arnavbose.liby.MainActivity"/>
+            android:parentActivityName="com.example.arnavbose.liby.MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenLayout"/>
         <activity android:name="com.example.arnavbose.liby.BookDetails"
-            android:parentActivityName="com.example.arnavbose.liby.Search"/>
+            android:parentActivityName="com.example.arnavbose.liby.Search"
+            android:configChanges="keyboardHidden|orientation|screenLayout"/>
 
     </application>
 

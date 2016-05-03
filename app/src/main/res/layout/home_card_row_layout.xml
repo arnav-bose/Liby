@@ -38,7 +38,8 @@
                 android:minHeight="60dp"
                 android:maxLines="2"
                 android:layout_alignTop="@+id/bookIcon"
-                android:layout_alignStart="@+id/bookAuthor" />
+                android:layout_alignStart="@+id/bookAuthor"
+                android:layout_alignLeft="@+id/bookAuthor" />
 
             <TextView
                 android:id="@+id/bookAuthor"
@@ -65,7 +66,8 @@
                 android:id="@+id/textViewBiblioNumberHome"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
-                android:layout_margin="8dp"/>
+                android:layout_margin="8dp"
+                android:layout_alignParentRight="true" />
 
 
         </RelativeLayout>

@@ -61,7 +61,8 @@
                 android:id="@+id/labelBookDetailsAvailable"
                 android:layout_below="@+id/view"
                 android:layout_alignStart="@+id/view"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:layout_alignLeft="@+id/view" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -72,7 +73,8 @@
                 android:layout_below="@+id/view"
                 android:layout_toEndOf="@+id/labelBookDetailsAvailable"
                 android:layout_marginTop="16dp"
-                android:layout_marginLeft="4dp"/>
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@+id/labelBookDetailsAvailable" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -82,7 +84,8 @@
                 android:id="@+id/labelBookDetailsPages"
                 android:layout_below="@+id/labelBookDetailsPublisher"
                 android:layout_alignStart="@+id/labelBookDetailsAvailable"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:layout_alignLeft="@+id/labelBookDetailsAvailable" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -91,7 +94,8 @@
                 android:text="&lt;Number of Pages>"
                 android:id="@+id/textViewBookDetailsPages"
                 android:layout_alignTop="@+id/labelBookDetailsPages"
-                android:layout_alignStart="@+id/textViewBookDetailsAvailable" />
+                android:layout_alignStart="@+id/textViewBookDetailsAvailable"
+                android:layout_alignLeft="@+id/textViewBookDetailsAvailable" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -101,7 +105,8 @@
                 android:id="@+id/labelBookDetailsPublisher"
                 android:layout_marginTop="16dp"
                 android:layout_below="@+id/labelBookDetailsAvailable"
-                android:layout_alignStart="@+id/labelBookDetailsPages" />
+                android:layout_alignStart="@+id/labelBookDetailsPages"
+                android:layout_alignLeft="@+id/labelBookDetailsPages" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -111,7 +116,8 @@
                 android:id="@+id/textViewBookDetailsPublisher"
                 android:layout_below="@+id/textViewBookDetailsAvailable"
                 android:layout_alignStart="@+id/textViewBookDetailsAvailable"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:layout_alignLeft="@+id/textViewBookDetailsAvailable" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -121,7 +127,8 @@
                 android:id="@+id/labelBookDetailsYear"
                 android:layout_below="@+id/labelBookDetailsPages"
                 android:layout_alignStart="@+id/labelBookDetailsPages"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:layout_alignLeft="@+id/labelBookDetailsPages" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -131,7 +138,8 @@
                 android:id="@+id/textViewBookDetailsYear"
                 android:layout_below="@+id/textViewBookDetailsPages"
                 android:layout_alignStart="@+id/textViewBookDetailsPages"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:layout_alignLeft="@+id/textViewBookDetailsPages" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -141,7 +149,8 @@
                 android:id="@+id/labelBookDetailsDescription"
                 android:layout_below="@+id/labelBookDetailsYear"
                 android:layout_alignStart="@+id/labelBookDetailsYear"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:layout_alignLeft="@+id/labelBookDetailsYear" />
 
             <TextView
                 android:layout_width="300dp"
@@ -156,7 +165,8 @@
                 android:background="@drawable/border"
                 android:padding="8dp"
                 android:layout_marginTop="8dp"
-                android:lines="6"/>
+                android:lines="10"
+                android:layout_alignLeft="@+id/labelBookDetailsDescription" />
 
             <Button
                 android:layout_width="wrap_content"

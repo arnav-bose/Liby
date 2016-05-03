@@ -3,14 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.arnavbose.liby.Search">
 
     <include android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
 
     <EditText
-        android:layout_width="300dp"
+        android:layout_width="275dp"
         android:id="@+id/editTextSearch"
         android:layout_below="@+id/toolbar"
         android:layout_marginTop="16dp"

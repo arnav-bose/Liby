@@ -30,7 +30,7 @@ import java.util.ArrayList;
 /**
  * Created by Arnav on 29/04/2016.
  */
-public class CurrentIssuesTask extends AsyncTask<String, DataSetCurrentIssues, Void> {
+public class AsyncTaskCurrentIssues extends AsyncTask<String, DataSetCurrentIssues, Void> {
 
     Context contextCurrentIsses;
     Activity activityCurrentIssues;
@@ -41,7 +41,7 @@ public class CurrentIssuesTask extends AsyncTask<String, DataSetCurrentIssues, V
     TextView textViewCurrentIssues;
 
 
-    public CurrentIssuesTask(Context contextCurrentIsses){
+    public AsyncTaskCurrentIssues(Context contextCurrentIsses){
         this.contextCurrentIsses = contextCurrentIsses;
         activityCurrentIssues = (Activity)contextCurrentIsses;
     }
@@ -59,12 +59,13 @@ public class CurrentIssuesTask extends AsyncTask<String, DataSetCurrentIssues, V
     protected Void doInBackground(String... params) {
 
         //String search_url = "http://192.168.99.1/cgi-bin/current_issues.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax TODO: CHANGE URLs!
-        String search_url = "http://10.0.2.2/cgi-bin/current_issues.pl"; //TODO: Add PHP(Write) URL here.
+        //String search_url = "http://172.19.21.93/cgi-bin/koha/current_issues.pl"; //TODO: Add PHP(Write) URL here.
+        String current_issues_url = "http://10.0.2.2/cgi-bin/current_issues.pl";
         String method = params[0];
         if (method.equals("Current Issues")) {
             String borrowerNumber = params[1];
             try {
-                URL url = new URL(search_url);
+                URL url = new URL(current_issues_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);

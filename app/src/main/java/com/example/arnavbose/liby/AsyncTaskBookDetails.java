@@ -25,12 +25,12 @@ import java.net.URLEncoder;
 /**
  * Created by Arnav on 4/19/2016.
  */
-public class BookDetailsTask extends AsyncTask<String, Void, String[]> {
+public class AsyncTaskBookDetails extends AsyncTask<String, Void, String[]> {
 
     Context contextBookDetails;
     Activity activityBookDetails;
 
-    BookDetailsTask(Context context){
+    AsyncTaskBookDetails(Context context){
         this.contextBookDetails = context;
         activityBookDetails = (Activity)context;
     }
@@ -43,7 +43,8 @@ public class BookDetailsTask extends AsyncTask<String, Void, String[]> {
     @Override
     protected String[] doInBackground(String... params) {
         //String book_details_url = "http://192.168.99.1/cgi-bin/bookdetails.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
-        String book_details_url = "http://10.0.2.2/cgi-bin/bookDetails.pl"; //TODO: Add PHP(Write) URL here.
+        //String book_details_url = "http://172.19.21.93/cgi-bin/koha/bookdetails.pl"; //TODO: Add PHP(Write) URL here.
+        String book_details_url = "http://10.0.2.2/cgi-bin/bookdetails.pl";
         String method = params[0];
         if (method.equals("Book Details")) {
             String biblionumber = params[1];

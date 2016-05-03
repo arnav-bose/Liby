@@ -28,7 +28,7 @@ import java.net.URLEncoder;
 /**
  * Created by Arnav on 4/20/2016.
  */
-public class LoginTask extends AsyncTask<String, Void, String> {
+public class AsyncTaskLogin extends AsyncTask<String, Void, String> {
 
     Context contextLogin;
     Activity activityLogin;
@@ -39,7 +39,7 @@ public class LoginTask extends AsyncTask<String, Void, String> {
     String jsonLastName = "";
     String jsonBorrowerNumber = "";
 
-    LoginTask(Context context){
+    AsyncTaskLogin(Context context){
         this.contextLogin = context;
         activityLogin = (Activity)context;
     }
@@ -55,13 +55,14 @@ public class LoginTask extends AsyncTask<String, Void, String> {
     protected String doInBackground(String... params) {
 
         //String search_url = "http://192.168.99.1/cgi-bin/login.pl"; //10.0.2.2 for Emulator and 192.168.99.101 for Connectify
-        String search_url = "http://10.0.2.2/cgi-bin/login.pl"; //TODO: Add PHP(Write) URL here.
+        //String search_url = "http://172.19.21.93/cgi-bin/koha/login.pl"; //TODO: Add PHP(Write) URL here.
+        String login_url = "http://10.0.2.2/cgi-bin/login.pl";
         String method = params[0];
         if (method.equals("Login")) {
             String username = params[1];
             String password = params[2];
             try {
-                URL url = new URL(search_url);
+                URL url = new URL(login_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);

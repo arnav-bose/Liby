@@ -23,12 +23,12 @@ import java.net.URLEncoder;
 /**
  * Created by Arnav on 29/04/2016.
  */
-public class ReserveTask extends AsyncTask<String, Void, Void> {
+public class AsyncTaskReserve extends AsyncTask<String, Void, Void> {
 
     Context contextReserve;
     Activity activityReserve;
 
-    public ReserveTask(Context contextReserve){
+    public AsyncTaskReserve(Context contextReserve){
         this.contextReserve = contextReserve;
         activityReserve = (Activity)contextReserve;
     }
@@ -42,13 +42,14 @@ public class ReserveTask extends AsyncTask<String, Void, Void> {
     protected Void doInBackground(String... params) {
 
         //String book_details_url = "http://192.168.99.1/cgi-bin/reserve.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
-        String book_details_url = "http://10.0.2.2/cgi-bin/reserve.pl"; //TODO: Add PHP(Write) URL here.
+        //String book_details_url = "http://172.19.21.93/cgi-bin/koha/reserve.pl"; //TODO: Add PHP(Write) URL here.
+        String reserve_url = "http://10.0.2.2/cgi-bin/reserve.pl";
         String method = params[0];
         if (method.equals("Reserve")) {
             String borrowerNumber = params[1];
             String biblionumber = params[2];
             try {
-                URL url = new URL(book_details_url);
+                URL url = new URL(reserve_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
@@ -64,6 +65,10 @@ public class ReserveTask extends AsyncTask<String, Void, Void> {
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                inputStream.close();
+                httpURLConnection.disconnect();
 
 
             } catch (MalformedURLException e) {

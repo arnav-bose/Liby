@@ -3,9 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.example.arnavbose.liby.Search">
 
-    <include android:id="@+id/toolbarMain"
+    <include android:id="@+id/toolbar"
         layout="@layout/toolbar"/>
 
     <EditText
@@ -17,7 +18,7 @@
         android:padding="10dp"
         android:layout_marginLeft="8dp"
         android:background="@drawable/edit_text_style"
-        android:textCursorDrawable="@drawable/cursor"/>
+        android:textCursorDrawable="@drawable/cursor" />
 
     <Button
         android:layout_width="wrap_content"
@@ -29,6 +30,7 @@
         android:layout_marginRight="8dp"
         android:onClick="onClickSearch"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:background="@drawable/button_style"/>
 
     <RadioGroup
@@ -47,6 +49,7 @@
             android:id="@+id/radioButtonTitle"
             android:layout_below="@+id/editText"
             android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
             android:checked="true" />
 
         <RadioButton
@@ -56,7 +59,8 @@
             android:id="@+id/radioButtonAuthor"
             android:layout_below="@+id/editText"
             android:layout_toEndOf="@+id/radioButtonTitle"
-            android:checked="false" />
+            android:checked="false"
+            android:layout_toRightOf="@+id/radioButtonTitle" />
     </RadioGroup>
 
     <View

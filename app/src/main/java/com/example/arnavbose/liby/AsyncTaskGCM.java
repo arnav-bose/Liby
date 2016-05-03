@@ -20,20 +20,21 @@ import java.net.URLEncoder;
 /**
  * Created by Arnav on 26/04/2016.
  */
-public class GCMTask extends AsyncTask<String, Void, Void> {
+public class AsyncTaskGCM extends AsyncTask<String, Void, Void> {
 
     @Override
     protected Void doInBackground(String... params) {
 
         //String search_url = "http://192.168.99.1/cgi-bin/gcm_register.pl"; //TODO: Add PHP(Write) URL here.
-        String search_url = "http://10.0.2.2/cgi-bin/gcm_register.pl"; //TODO: Add PHP(Write) URL here.
+        //String search_url = "http://172.19.21.93/cgi-bin/koha/gcm_register.pl"; //TODO: Add PHP(Write) URL here.
+        String gcm_url = "http://10.0.2.2/cgi-bin/gcm_register.pl";
         String method = params[0];
         if (method.equals("Send Token")) {
             String token = params[1];
             String borrowerNumber = params[2];
 
             try {
-                URL url = new URL(search_url);
+                URL url = new URL(gcm_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);

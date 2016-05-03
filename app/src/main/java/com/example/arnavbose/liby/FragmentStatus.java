@@ -38,7 +38,7 @@ public class FragmentStatus extends Fragment {
         mRecyclerView.setAdapter(mAdapter);
 
         String method = "Current Issues";
-        //CurrentIssuesTask currentIssuesTask = new CurrentIssuesTask(getContext());
+        //AsyncTaskCurrentIssues currentIssuesTask = new AsyncTaskCurrentIssues(getContext());
         //currentIssuesTask.execute(method, borrowerNumber);
 
         return view;

@@ -87,16 +87,17 @@ public class LogIn extends AppCompatActivity {
         password = editTextpassword.getText().toString();
         if (!username.equals("") & !password.equals("")) {
             String method = "Login";
-            LoginTask loginTask = new LoginTask(LogIn.this);
+            AsyncTaskLogin loginTask = new AsyncTaskLogin(LogIn.this);
             loginTask.execute(method, username, password);
 
             if (checkPlayServices()) {
                 Intent intent = new Intent(getApplicationContext(), GCMRegistrationIntentService.class);
                 startService(intent);
                 Log.d("Registeration", "Registeration Intent Started");
-            } else if (username.equals("") || password.equals("")) {
-                Toast.makeText(this, "Please Enter All The Fields", Toast.LENGTH_SHORT).show();
             }
+            }
+        else if (username.equals("") || password.equals("")) {
+            Toast.makeText(this, "Please Enter All The Fields", Toast.LENGTH_SHORT).show();
         }
     }
 }

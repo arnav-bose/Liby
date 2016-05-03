@@ -23,8 +23,6 @@ public class FragmentHistory extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        setRetainInstance(true);
-
         return inflater.inflate(R.layout.fragment_history, container, false);
     }
 

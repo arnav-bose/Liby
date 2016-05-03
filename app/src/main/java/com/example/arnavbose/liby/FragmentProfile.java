@@ -3,6 +3,7 @@ package com.example.arnavbose.liby;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -39,12 +40,12 @@ public class FragmentProfile extends Fragment {
         imageViewProfilePicture = (CircularImageView)view.findViewById(R.id.imageViewProfilePicture);
         textViewProfileName = (TextView)view.findViewById(R.id.textViewProfileName);
 
-        SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyData", Context.MODE_PRIVATE);
-        String name = sharedPreferences.getString("name", "");
+        AppData.myData = PreferenceManager.getDefaultSharedPreferences(getContext());
+        String name = AppData.myData.getString("name", "");
         textViewProfileName.setText(name);
 
         //Tab Layout================================================================
-        viewPagerAdapterProfile = new ViewPagerAdapterProfile(getFragmentManager());
+        viewPagerAdapterProfile = new ViewPagerAdapterProfile(getChildFragmentManager());
         viewPagerProfile.setAdapter(viewPagerAdapterProfile);
 
         final TabLayout.Tab status = tabLayoutProfile.newTab();

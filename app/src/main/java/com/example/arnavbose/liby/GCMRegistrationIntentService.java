@@ -36,10 +36,7 @@ public class GCMRegistrationIntentService extends IntentService {
 
             AppData.myData = PreferenceManager.getDefaultSharedPreferences(this);
             String borrowerNumber = AppData.myData.getString("borrowerNumber", "");
-            Log.d("borrowerNumber",borrowerNumber);
-            Log.d("ID","STARTED");
             sendRegistrationToServer(token, borrowerNumber);
-            Log.d("ID","CHANGED PREFS");
             AppData.GCMRegisteration.edit().putBoolean(AppData.SENT_TOKEN_TO_SERVER, true).apply();
 
 
@@ -55,7 +52,6 @@ public class GCMRegistrationIntentService extends IntentService {
 
 
     private void sendRegistrationToServer(String token, String borrowerNumber) {
-        Log.d("ID","I AM HERE");
         String method = "Send Token";
         GCMTask gcmTask = new GCMTask();
         gcmTask.execute(method, token, borrowerNumber);

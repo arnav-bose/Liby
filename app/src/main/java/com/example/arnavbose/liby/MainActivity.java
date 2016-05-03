@@ -172,8 +172,11 @@ public class MainActivity extends AppCompatActivity {
                 AppData.WELCOME_MESSAGE = false;
                 AppData.myData = PreferenceManager.getDefaultSharedPreferences(this);
                 SharedPreferences.Editor editor = AppData.myData.edit();
+                editor.putString("name", "");
+                editor.putString("borrowerNumber", "");
                 editor.putBoolean("LOGIN_CHECK", AppData.LOGIN_CHECK);
                 editor.putBoolean("WELCOME_MESSAGE", AppData.WELCOME_MESSAGE);
+                editor.commit();
                 Intent intent = new Intent(MainActivity.this, LogIn.class);
                 startActivity(intent);
                 finish();

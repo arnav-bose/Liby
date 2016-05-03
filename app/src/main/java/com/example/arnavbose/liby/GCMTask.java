@@ -5,8 +5,11 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
@@ -22,21 +25,18 @@ public class GCMTask extends AsyncTask<String, Void, Void> {
     @Override
     protected Void doInBackground(String... params) {
 
+        //String search_url = "http://192.168.99.1/cgi-bin/gcm_register.pl"; //TODO: Add PHP(Write) URL here.
         String search_url = "http://10.0.2.2/cgi-bin/gcm_register.pl"; //TODO: Add PHP(Write) URL here.
         String method = params[0];
         if (method.equals("Send Token")) {
             String token = params[1];
             String borrowerNumber = params[2];
-            Log.d("FALCON", "bn" + borrowerNumber);
-
-            Log.d("ID","YOLO");
 
             try {
                 URL url = new URL(search_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
-                httpURLConnection.setDoInput(true);
                 OutputStream outputStream = httpURLConnection.getOutputStream();
                 BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
 
@@ -48,6 +48,10 @@ public class GCMTask extends AsyncTask<String, Void, Void> {
                 bufferedWriter.flush();
                 bufferedWriter.close();
                 outputStream.close();
+
+                InputStream inputStream = httpURLConnection.getInputStream();
+                inputStream.close();
+                httpURLConnection.disconnect();
 
             } catch (MalformedURLException e) {
                 e.printStackTrace();

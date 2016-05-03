@@ -21,7 +21,6 @@ public class FragmentStatus extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_status, container, false);
 
-        setRetainInstance(true);
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("MyData", Context.MODE_PRIVATE);
         String borrowerNumber = sharedPreferences.getString("borrowerNumber", "");
 

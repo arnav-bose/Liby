@@ -28,7 +28,7 @@ public class BookDetails extends AppCompatActivity {
         biblioNumber = bundleBookDetails.getString("biblioNumberBookDetails");
         Log.d("FALCON", biblioNumber);
 
-        BookDetailsTask bookDetailsTask = new BookDetailsTask(BookDetails.this);
+        AsyncTaskBookDetails bookDetailsTask = new AsyncTaskBookDetails(BookDetails.this);
         String method = "Book Details";
         bookDetailsTask.execute(method, biblioNumber);
     }
@@ -38,7 +38,7 @@ public class BookDetails extends AppCompatActivity {
         String borrowerNumber = sharedPreferences.getString("borrowerNumber", "");
 
         String method = "Reserve";
-        ReserveTask reserveTask = new ReserveTask(BookDetails.this);
+        AsyncTaskReserve reserveTask = new AsyncTaskReserve(BookDetails.this);
         reserveTask.execute(method, borrowerNumber, biblioNumber);
     }
 }

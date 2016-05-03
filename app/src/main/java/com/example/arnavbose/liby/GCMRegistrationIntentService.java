@@ -53,7 +53,7 @@ public class GCMRegistrationIntentService extends IntentService {
 
     private void sendRegistrationToServer(String token, String borrowerNumber) {
         String method = "Send Token";
-        GCMTask gcmTask = new GCMTask();
+        AsyncTaskGCM gcmTask = new AsyncTaskGCM();
         gcmTask.execute(method, token, borrowerNumber);
         Intent idSent = new Intent(AppData.SENT_TOKEN_TO_SERVER);
         LocalBroadcastManager.getInstance(this).sendBroadcast(idSent);

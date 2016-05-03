@@ -53,7 +53,7 @@ public class Search extends AppCompatActivity {
         titleSearch = editTextSearch.getText().toString();
         if(!titleSearch.equals("")){
             String method = "Search";
-            SearchTask searchTask = new SearchTask(Search.this);
+            AsyncTaskSearch searchTask = new AsyncTaskSearch(Search.this);
             searchTask.execute(method, titleSearch, type);
             InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);

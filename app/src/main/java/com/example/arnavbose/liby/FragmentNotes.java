@@ -24,8 +24,10 @@ public class FragmentNotes extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.notes, container, false);
 
-        //NotesTask notesTask = new NotesTask(getContext());
-        //notesTask.execute();
+        final String URL = "http://www.angrymetalguy.com/wp-content/uploads/2016/01/Steven-Wilson-2016.jpg";
+
+        AsyncTaskGetNotes asyncTaskGetNotes = new AsyncTaskGetNotes(getContext());
+        asyncTaskGetNotes.execute(URL);
 
         setRetainInstance(true);
         buttonNotes = (Button)view.findViewById(R.id.buttonNotes);

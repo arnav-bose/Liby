@@ -3,10 +3,12 @@
     package="com.example.arnavbose.liby">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
-    <permission android:name="com.example.arnavbose.liby.permission.C2D_MESSAGE"
+    <permission
+        android:name="com.example.arnavbose.liby.permission.C2D_MESSAGE"
         android:protectionLevel="signature" />
+
     <uses-permission android:name="com.example.arnavbose.liby.permission.C2D_MESSAGE" />
 
     <application
@@ -15,40 +17,35 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/LibyAppTheme">
-
         <receiver
             android:name="com.google.android.gms.gcm.GcmReceiver"
             android:exported="true"
-            android:permission="com.google.android.c2dm.permission.SEND" >
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
                 <category android:name="com.example.gcm" />
             </intent-filter>
         </receiver>
 
         <service
-            android:name="com.example.arnavbose.liby.GCMListenerService"
-            android:exported="false" >
+            android:name=".GCMListenerService"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
-
         <service
-            android:name="com.example.arnavbose.liby.GCMInstanceIDListener"
+            android:name=".GCMInstanceIDListener"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.android.gms.iid.InstanceID" />
             </intent-filter>
         </service>
+        <service android:name=".GCMRegistrationIntentService" />
 
-        <service android:name="com.example.arnavbose.liby.GCMRegistrationIntentService" />
-
-
-
-
-
-        <activity android:name="com.example.arnavbose.liby.SplashScreen"
+        <activity
+            android:name=".SplashScreen"
             android:configChanges="keyboardHidden|orientation|screenLayout">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -56,17 +53,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.arnavbose.liby.LogIn"
-            android:configChanges="keyboardHidden|orientation|screenLayout"/>
-        <activity android:name="com.example.arnavbose.liby.MainActivity"
-            android:configChanges="keyboardHidden|orientation|screenLayout"/>
-        <activity android:name="com.example.arnavbose.liby.Search"
-            android:parentActivityName="com.example.arnavbose.liby.MainActivity"
-            android:configChanges="keyboardHidden|orientation|screenLayout"/>
-        <activity android:name="com.example.arnavbose.liby.BookDetails"
-            android:parentActivityName="com.example.arnavbose.liby.Search"
-            android:configChanges="keyboardHidden|orientation|screenLayout"/>
-
+        <activity
+            android:name=".LogIn"
+            android:configChanges="keyboardHidden|orientation|screenLayout" />
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="keyboardHidden|orientation|screenLayout" />
+        <activity
+            android:name=".Search"
+            android:configChanges="keyboardHidden|orientation|screenLayout"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".BookDetails"
+            android:configChanges="keyboardHidden|orientation|screenLayout"
+            android:parentActivityName=".Search" />
     </application>
 
 </manifest>

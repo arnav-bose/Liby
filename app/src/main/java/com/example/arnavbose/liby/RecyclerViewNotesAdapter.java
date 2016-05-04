@@ -57,7 +57,7 @@ public class RecyclerViewNotesAdapter extends RecyclerView.Adapter<RecyclerViewN
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         DataSetNotes dataSetNotes = arrayList.get(position);
-        holder.imageViewNotes.setImageResource(dataSetNotes.getImageViewNotes());
+        holder.imageViewNotes.setImageBitmap(dataSetNotes.getImageViewNotes());
         holder.textViewNotesTitle.setText(dataSetNotes.getTitleNotes());
         holder.textViewNotesContributer.setText(dataSetNotes.getContributerNotes());
         holder.textViewNotesSubject.setText(dataSetNotes.getSubjectNotes());

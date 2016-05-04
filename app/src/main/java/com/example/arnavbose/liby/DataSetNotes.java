@@ -1,27 +1,29 @@
 package com.example.arnavbose.liby;
 
+import android.graphics.Bitmap;
+
 /**
  * Created by Arnav on 28/04/2016.
  */
 public class DataSetNotes {
 
-    int imageViewNotes;
+    Bitmap imageViewNotes;
     String titleNotes;
     String contributerNotes;
     String subjectNotes;
 
-    public DataSetNotes(int imageViewNotes, String titleNotes, String contributerNotes, String subjectNotes){
+    public DataSetNotes(Bitmap imageViewNotes, String titleNotes, String contributerNotes, String subjectNotes){
         this.imageViewNotes = imageViewNotes;
         this.titleNotes = titleNotes;
         this.contributerNotes = contributerNotes;
         this.subjectNotes = subjectNotes;
     }
 
-    public int getImageViewNotes() {
+    public Bitmap getImageViewNotes() {
         return imageViewNotes;
     }
 
-    public void setImageViewNotes(int imageViewNotes) {
+    public void setImageViewNotes(Bitmap imageViewNotes) {
         this.imageViewNotes = imageViewNotes;
     }
 

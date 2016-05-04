@@ -31,24 +31,24 @@ public class NotesTask extends AsyncTask<Void, Void, Void> {
     protected void onPreExecute() {
         super.onPreExecute();
 
-        recyclerViewNotes = (RecyclerView) activityNotes.findViewById(R.id.recyclerViewNotes);
-        layoutManagerNotes = new LinearLayoutManager(contextNotes);
-        recyclerViewNotes.setLayoutManager(layoutManagerNotes);
-        recyclerViewNotes.setHasFixedSize(true);
-        //adapterNotes = new RecyclerViewNotesAdapter(arrayListDataSetNotes);
-        adapterNotes = new RecyclerViewNotesAdapter(getDataSetNotes());
-        recyclerViewNotes.setAdapter(adapterNotes);
+//        recyclerViewNotes = (RecyclerView) activityNotes.findViewById(R.id.recyclerViewNotes);
+//        layoutManagerNotes = new LinearLayoutManager(contextNotes);
+//        recyclerViewNotes.setLayoutManager(layoutManagerNotes);
+//        recyclerViewNotes.setHasFixedSize(true);
+//        //adapterNotes = new RecyclerViewNotesAdapter(arrayListDataSetNotes);
+//        adapterNotes = new RecyclerViewNotesAdapter(getDataSetNotes());
+//        recyclerViewNotes.setAdapter(adapterNotes);
     }
 
-    private ArrayList<DataSetNotes> getDataSetNotes() {
-        ArrayList results = new ArrayList<DataSetNotes>();
-        for (int index = 0; index < 20; index++) {
-            DataSetNotes object = new DataSetNotes(R.drawable.liby_logo, "<Title " + index + ">",
-                    "<Contributer " + index + ">", "Subject");
-            results.add(index, object);
-        }
-        return results;
-    }
+//    private ArrayList<DataSetNotes> getDataSetNotes() {
+//        ArrayList results = new ArrayList<DataSetNotes>();
+//        for (int index = 0; index < 20; index++) {
+//            DataSetNotes object = new DataSetNotes(R.drawable.liby_logo, "<Title " + index + ">",
+//                    "<Contributer " + index + ">", "Subject");
+//            results.add(index, object);
+//        }
+//        return results;
+//    }
 
     @Override
     protected Void doInBackground(Void... params) {

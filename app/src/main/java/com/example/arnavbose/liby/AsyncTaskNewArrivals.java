@@ -28,11 +28,15 @@ import java.util.ArrayList;
 
 import android.widget.Toast;
 
+import com.example.arnavbose.liby.DataSetSearch;
+import com.example.arnavbose.liby.R;
+import com.example.arnavbose.liby.RecyclerViewSearchAdapter;
+
 
 /**
  * Created by arnavbose on 15-04-2016.
  */
-public class AsyncTaskSearch extends AsyncTask<String, DataSetSearch, Void> {
+public class AsyncTaskNewArrivals extends AsyncTask<String, DataSetSearch, Void> {
 
     Context contextSearch;
     Activity activity;
@@ -42,7 +46,7 @@ public class AsyncTaskSearch extends AsyncTask<String, DataSetSearch, Void> {
     ArrayList<DataSetSearch> arrayList = new ArrayList<>();
     Bundle bundleBookDetails;
 
-    AsyncTaskSearch(Context context) {
+    AsyncTaskNewArrivals(Context context) {
         this.contextSearch = context;
         activity = (Activity) context;
     }
@@ -60,31 +64,19 @@ public class AsyncTaskSearch extends AsyncTask<String, DataSetSearch, Void> {
 
     @Override
     protected Void doInBackground(String... params) {
-        String search_url = "http://192.168.99.1/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
-        //String search_url = "http://172.19.17.58/cgi-bin/koha/Search.pl"; //TODO: Add PHP(Write) URL here.
+        String new_arrivals_url = "http://192.168.99.1/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
+        //String new_arrivals_url = "http://172.19.17.58/cgi-bin/koha/new_arrivals_main.pl"; //TODO: Add PHP(Write) URL here.
         //String search_url = "http://10.0.2.2/cgi-bin/search.pl";
         String method = params[0];
         if (method.equals("Search")) {
             String titleSearch = params[1];
             String type = params[2];
             try {
-                URL url = new URL(search_url);
+                URL url = new URL(new_arrivals_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
                 httpURLConnection.setRequestMethod("POST");
                 httpURLConnection.setDoOutput(true);
                 httpURLConnection.setDoInput(true);
-                OutputStream outputStream = httpURLConnection.getOutputStream();
-                BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream, "UTF-8"));
-
-                String data =
-                        URLEncoder.encode("text", "UTF-8") + "=" + URLEncoder.encode(titleSearch, "UTF-8") + "&" +
-                                URLEncoder.encode("type", "UTF-8") + "=" + URLEncoder.encode(type, "UTF-8");
-//                        URLEncoder.encode("title", "UTF-8") + "=" + URLEncoder.encode(titleSearch, "UTF-8");
-
-                bufferedWriter.write(data);
-                bufferedWriter.flush();
-                bufferedWriter.close();
-                outputStream.close();
 
                 InputStream inputStream = httpURLConnection.getInputStream();
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream, "UTF-8"));
@@ -109,7 +101,7 @@ public class AsyncTaskSearch extends AsyncTask<String, DataSetSearch, Void> {
                     String jsonBiblioNumber = finalObject.getString("biblionumber");
 
                     DataSetSearch dataSetSearch = new DataSetSearch(jsonTitle, jsonAuthor, jsonBiblioNumber);
-                    Log.d("FALCON",jsonBiblioNumber + " : " + jsonTitle + " : " + jsonAuthor);
+                    Log.d("FALCON", jsonBiblioNumber + " : " + jsonTitle + " : " + jsonAuthor);
                     publishProgress(dataSetSearch);
                 }
             } catch (MalformedURLException e) {

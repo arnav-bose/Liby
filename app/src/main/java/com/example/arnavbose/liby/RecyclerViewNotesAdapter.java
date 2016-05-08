@@ -35,6 +35,7 @@ public class RecyclerViewNotesAdapter extends RecyclerView.Adapter<RecyclerViewN
             view.setOnClickListener(this);
         }
 
+
         public void onClick(View v){
             myClickListener.onItemClick(getAdapterPosition(), v);
         }

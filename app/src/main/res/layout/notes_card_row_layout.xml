@@ -1,4 +1,5 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -33,7 +34,8 @@
                 android:layout_alignTop="@+id/imageViewNotes"
                 android:layout_toEndOf="@+id/imageViewNotes"
                 android:layout_marginLeft="16dp"
-                android:lines="2"/>
+                android:lines="2"
+                android:layout_toRightOf="@+id/imageViewNotes" />
 
             <TextView
                 android:layout_width="wrap_content"

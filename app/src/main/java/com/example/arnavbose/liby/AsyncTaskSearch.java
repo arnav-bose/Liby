@@ -1,6 +1,7 @@
 package com.example.arnavbose.liby;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 
 import android.os.AsyncTask;
@@ -40,7 +41,7 @@ public class AsyncTaskSearch extends AsyncTask<String, DataSetSearch, Void> {
     RecyclerView.Adapter adapterSearch;
     RecyclerView.LayoutManager layoutManagerSearch;
     ArrayList<DataSetSearch> arrayList = new ArrayList<>();
-    Bundle bundleBookDetails;
+    ProgressDialog progressDialogSearch;
 
     AsyncTaskSearch(Context context) {
         this.contextSearch = context;
@@ -56,13 +57,18 @@ public class AsyncTaskSearch extends AsyncTask<String, DataSetSearch, Void> {
         recyclerViewSearch.setHasFixedSize(true);
         adapterSearch = new RecyclerViewSearchAdapter(arrayList);
         recyclerViewSearch.setAdapter(adapterSearch);
+        progressDialogSearch = new ProgressDialog(activity);
+        progressDialogSearch.setTitle("Liby");
+        progressDialogSearch.setMessage("Searching...");
+        progressDialogSearch.setIndeterminate(false);
+        progressDialogSearch.show();
     }
 
     @Override
     protected Void doInBackground(String... params) {
-        String search_url = "http://192.168.99.1/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
+        //String search_url = "http://192.168.99.1/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
         //String search_url = "http://172.19.17.58/cgi-bin/koha/Search.pl"; //TODO: Add PHP(Write) URL here.
-        //String search_url = "http://10.0.2.2/cgi-bin/search.pl";
+        String search_url = "http://10.0.2.2/cgi-bin/search.pl";
         String method = params[0];
         if (method.equals("Search")) {
             String titleSearch = params[1];
@@ -133,5 +139,6 @@ public class AsyncTaskSearch extends AsyncTask<String, DataSetSearch, Void> {
     @Override
     protected void onPostExecute(Void result) {
         super.onPostExecute(result);
+        progressDialogSearch.dismiss();
     }
 }

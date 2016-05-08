@@ -1,6 +1,7 @@
 package com.example.arnavbose.liby;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,6 +39,7 @@ public class AsyncTaskLogin extends AsyncTask<String, Void, String> {
     String jsonFirstName = "";
     String jsonLastName = "";
     String jsonBorrowerNumber = "";
+    ProgressDialog progressDialogLogin;
 
     AsyncTaskLogin(Context context){
         this.contextLogin = context;
@@ -49,6 +51,12 @@ public class AsyncTaskLogin extends AsyncTask<String, Void, String> {
         super.onPreExecute();
         editTextUsername = (EditText)activityLogin.findViewById(R.id.editTextUsername);
         editTextPassword = (EditText)activityLogin.findViewById(R.id.editTextPassword);
+
+        progressDialogLogin = new ProgressDialog(activityLogin);
+        progressDialogLogin.setTitle("Liby");
+        progressDialogLogin.setMessage("Logging In...");
+        progressDialogLogin.setIndeterminate(false);
+        progressDialogLogin.show();
     }
 
     @Override
@@ -119,6 +127,7 @@ public class AsyncTaskLogin extends AsyncTask<String, Void, String> {
             editTextUsername.setText("");
             editTextPassword.setText("");
             login = false;
+            progressDialogLogin.dismiss();
         }
         else{
             try{
@@ -136,6 +145,7 @@ public class AsyncTaskLogin extends AsyncTask<String, Void, String> {
                 editor.putString("name", jsonFirstName + " " + jsonLastName);
                 editor.putBoolean("LOGIN_CHECK", AppData.LOGIN_CHECK);
                 editor.apply();
+                progressDialogLogin.dismiss();
 
                 Intent i = new Intent(contextLogin, MainActivity.class);
                 contextLogin.startActivity(i);

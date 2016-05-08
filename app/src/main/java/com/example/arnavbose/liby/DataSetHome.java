@@ -5,26 +5,17 @@ package com.example.arnavbose.liby;
  */
 public class DataSetHome {
 
-    private int mImage;
     private String mText1;
     private String mText2;
     private String mText3;
     private String mText4;
 
-    DataSetHome(int image, String text1, String text2, String text3, String text4){
-        mImage = image;
+    DataSetHome(String text1, String text2, String text3, String text4){
+
         mText1 = text1;
         mText2 = text2;
         mText3 = text3;
         mText4 = text4;
-    }
-
-    public int getmImage(){
-        return mImage;
-    }
-
-    public void setmImage(int mImage){
-        this.mImage = mImage;
     }
 
     public String getmText1() {

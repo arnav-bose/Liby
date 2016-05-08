@@ -1,6 +1,7 @@
 package com.example.arnavbose.liby;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,10 +30,16 @@ public class AsyncTaskBookDetails extends AsyncTask<String, Void, String[]> {
 
     Context contextBookDetails;
     Activity activityBookDetails;
+    ProgressDialog progressDialogBookDetails;
 
     AsyncTaskBookDetails(Context context){
         this.contextBookDetails = context;
         activityBookDetails = (Activity)context;
+        progressDialogBookDetails = new ProgressDialog(activityBookDetails);
+        progressDialogBookDetails.setTitle("Liby");
+        progressDialogBookDetails.setIndeterminate(false);
+        progressDialogBookDetails.setMessage("Loading Book Details...");
+        progressDialogBookDetails.show();
     }
 
     @Override
@@ -42,9 +49,9 @@ public class AsyncTaskBookDetails extends AsyncTask<String, Void, String[]> {
 
     @Override
     protected String[] doInBackground(String... params) {
-        String book_details_url = "http://192.168.99.1/cgi-bin/bookdetails.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
+        //String book_details_url = "http://192.168.99.1/cgi-bin/bookdetails.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
         //String book_details_url = "http://172.19.17.58/cgi-bin/koha/bookdetails.pl"; //TODO: Add PHP(Write) URL here.
-        //String book_details_url = "http://10.0.2.2/cgi-bin/bookdetails.pl";
+        String book_details_url = "http://10.0.2.2/cgi-bin/bookdetails.pl";
         String method = params[0];
         if (method.equals("Book Details")) {
             String biblionumber = params[1];
@@ -127,5 +134,7 @@ public class AsyncTaskBookDetails extends AsyncTask<String, Void, String[]> {
         textViewPages.setText(result[4]);
         textViewYear.setText(result[5]);
         textViewDescription.setText(result[6]);
+
+        progressDialogBookDetails.dismiss();
     }
 }

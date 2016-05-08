@@ -44,6 +44,7 @@ public class FragmentNotes extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.notes, container, false);
 
+        setRetainInstance(true);
         buttonRefresh = (Button)view.findViewById(R.id.buttonRefresh);
 
         buttonRefresh.setOnClickListener(new View.OnClickListener() {
@@ -62,11 +63,6 @@ public class FragmentNotes extends Fragment {
             }
         });
 
-
-
-
-
-        setRetainInstance(true);
         buttonNotes = (Button)view.findViewById(R.id.buttonNotes);
         buttonNotes.setOnClickListener(new View.OnClickListener(){
             @Override

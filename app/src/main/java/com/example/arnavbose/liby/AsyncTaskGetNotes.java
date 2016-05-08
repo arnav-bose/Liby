@@ -31,7 +31,7 @@ public class AsyncTaskGetNotes extends AsyncTask<String, DataSetNotes, Bitmap> {
 
     @Override
     protected void onPreExecute() {
-        recyclerViewNotes = (RecyclerView) activityNotes.findViewById(R.id.recyclerViewNotes);
+        recyclerViewNotes = (RecyclerView)activityNotes.findViewById(R.id.recyclerViewNotes);
         layoutManagerNotes = new LinearLayoutManager(contextNotes);
         recyclerViewNotes.setLayoutManager(layoutManagerNotes);
         recyclerViewNotes.setHasFixedSize(true);

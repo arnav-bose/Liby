@@ -26,51 +26,50 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
+import android.view.View;
 import android.widget.Toast;
 
-import com.example.arnavbose.liby.DataSetSearch;
-import com.example.arnavbose.liby.R;
-import com.example.arnavbose.liby.RecyclerViewSearchAdapter;
 
 
 /**
  * Created by arnavbose on 15-04-2016.
  */
-public class AsyncTaskNewArrivals extends AsyncTask<String, DataSetSearch, Void> {
+public class AsyncTaskHome extends AsyncTask<String, DataSetHome, Void> {
 
-    Context contextSearch;
-    Activity activity;
-    RecyclerView recyclerViewSearch;
-    RecyclerView.Adapter adapterSearch;
-    RecyclerView.LayoutManager layoutManagerSearch;
-    ArrayList<DataSetSearch> arrayList = new ArrayList<>();
-    Bundle bundleBookDetails;
+    Context contextHome;
+    Activity activityHome;
+    RecyclerView recyclerViewHome;
+    RecyclerView.Adapter adapterHome;
+    RecyclerView.LayoutManager layoutManagerHome;
+    ArrayList<DataSetHome> arrayListHome = new ArrayList<>();
 
-    AsyncTaskNewArrivals(Context context) {
-        this.contextSearch = context;
-        activity = (Activity) context;
+    AsyncTaskHome(Context contextHome, RecyclerView recyclerView) {
+        this.contextHome = contextHome;
+        activityHome = (Activity)contextHome;
+        this.recyclerViewHome = recyclerView;
     }
 
     @Override
     protected void onPreExecute() {
-
-        recyclerViewSearch = (RecyclerView) activity.findViewById(R.id.recyclerViewSearch);
-        layoutManagerSearch = new LinearLayoutManager(contextSearch);
-        recyclerViewSearch.setLayoutManager(layoutManagerSearch);
-        recyclerViewSearch.setHasFixedSize(true);
-        adapterSearch = new RecyclerViewSearchAdapter(arrayList);
-        recyclerViewSearch.setAdapter(adapterSearch);
+        //try {
+            //recyclerViewHome = (RecyclerView) activityHome.findViewById(R.id.recyclerViewHome);
+            layoutManagerHome = new LinearLayoutManager(contextHome);
+            recyclerViewHome.setLayoutManager(layoutManagerHome);
+            recyclerViewHome.setHasFixedSize(true);
+            adapterHome = new RecyclerViewHomeAdapter(arrayListHome);
+            recyclerViewHome.setAdapter(adapterHome);
+        //}catch(NullPointerException e){
+        //    Toast.makeText(contextHome, "YOLO", Toast.LENGTH_SHORT).show();
+        //}
     }
 
     @Override
     protected Void doInBackground(String... params) {
-        String new_arrivals_url = "http://192.168.99.1/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
+        //String new_arrivals_url = "http://192.168.99.1/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
         //String new_arrivals_url = "http://172.19.17.58/cgi-bin/koha/new_arrivals_main.pl"; //TODO: Add PHP(Write) URL here.
-        //String search_url = "http://10.0.2.2/cgi-bin/search.pl";
+        String new_arrivals_url = "http://10.0.2.2/cgi-bin/home.pl";
         String method = params[0];
-        if (method.equals("Search")) {
-            String titleSearch = params[1];
-            String type = params[2];
+        if (method.equals("Home")) {
             try {
                 URL url = new URL(new_arrivals_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -100,9 +99,9 @@ public class AsyncTaskNewArrivals extends AsyncTask<String, DataSetSearch, Void>
                     String jsonAuthor = finalObject.getString("author");
                     String jsonBiblioNumber = finalObject.getString("biblionumber");
 
-                    DataSetSearch dataSetSearch = new DataSetSearch(jsonTitle, jsonAuthor, jsonBiblioNumber);
+                    DataSetHome dataSetHome = new DataSetHome(jsonTitle, jsonAuthor, "Available: 4",jsonBiblioNumber);
                     Log.d("FALCON", jsonBiblioNumber + " : " + jsonTitle + " : " + jsonAuthor);
-                    publishProgress(dataSetSearch);
+                    publishProgress(dataSetHome);
                 }
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -110,16 +109,19 @@ public class AsyncTaskNewArrivals extends AsyncTask<String, DataSetSearch, Void>
                 e.printStackTrace();
             } catch (JSONException e) {
                 e.printStackTrace();
-                Toast.makeText(contextSearch, "No records Found.", Toast.LENGTH_LONG);
             }
         }
         return null;
     }
 
 
-    protected void onProgressUpdate(DataSetSearch... dataSetSearches) {
-        arrayList.add(dataSetSearches[0]);
-        adapterSearch.notifyDataSetChanged();
+    protected void onProgressUpdate(DataSetHome... dataSetHomes) {
+        try {
+            arrayListHome.add(dataSetHomes[0]);
+            adapterHome.notifyDataSetChanged();
+        }catch(NullPointerException e){
+
+        }
     }
 
     @Override

@@ -58,9 +58,9 @@ public class AsyncTaskCurrentIssues extends AsyncTask<String, DataSetCurrentIssu
     @Override
     protected Void doInBackground(String... params) {
 
-        String current_issues_url = "http://192.168.99.1/cgi-bin/current_issues.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax TODO: CHANGE URLs!
+        //String current_issues_url = "http://192.168.99.1/cgi-bin/current_issues.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax TODO: CHANGE URLs!
         //String current_issues_url = "http://172.19.17.58/cgi-bin/koha/current_issues.pl"; //TODO: Add PHP(Write) URL here.
-        //String current_issues_url = "http://10.0.2.2/cgi-bin/current_issues.pl";
+        String current_issues_url = "http://10.0.2.2/cgi-bin/current_issues.pl";
         String method = params[0];
         if (method.equals("Current Issues")) {
             String borrowerNumber = params[1];

@@ -20,9 +20,10 @@ import java.util.ArrayList;
  */
 public class FragmentHome extends Fragment {
 
-    private RecyclerView mRecyclerView;
+    public RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+
 
     @Nullable
     @Override
@@ -31,11 +32,16 @@ public class FragmentHome extends Fragment {
 
         setRetainInstance(true);
         mRecyclerView = (RecyclerView)view.findViewById(R.id.recyclerViewHome);
-        mRecyclerView.setHasFixedSize(true);
-        mLayoutManager = new LinearLayoutManager(getActivity());
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new RecyclerViewHomeAdapter(getHomeDataSet());
-        mRecyclerView.setAdapter(mAdapter);
+//        mRecyclerView.setHasFixedSize(true);
+//        mLayoutManager = new LinearLayoutManager(getActivity());
+//        mRecyclerView.setLayoutManager(mLayoutManager);
+//        mAdapter = new RecyclerViewHomeAdapter(getHomeDataSet());
+//        mRecyclerView.setAdapter(mAdapter);
+
+        String method = "Home";
+        AsyncTaskHome asyncTaskHome = new AsyncTaskHome(getContext(), mRecyclerView);
+        asyncTaskHome.execute(method);
+
 
         return view;
     }
@@ -43,7 +49,7 @@ public class FragmentHome extends Fragment {
     private ArrayList<DataSetHome> getHomeDataSet() {
         ArrayList results = new ArrayList<DataSetHome>();
         for (int index = 0; index < 20; index++) {
-            DataSetHome object = new DataSetHome(R.drawable.liby_logo, "<Title " + index + ">",
+            DataSetHome object = new DataSetHome("<Title " + index + ">",
                     "<Author " + index + ">", "Available: 3", "<BiblioNumber>");
             results.add(index, object);
         }

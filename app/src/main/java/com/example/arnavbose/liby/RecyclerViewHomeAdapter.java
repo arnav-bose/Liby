@@ -11,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import java.util.ArrayList;
 
-
 /**
  * Created by arnavbose on 14-02-2016.
  */
@@ -23,7 +22,6 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
     public static class RecyclerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        ImageView bookIcon;
         TextView bookTitle;
         TextView bookAuthor;
         TextView bookAvailable;
@@ -32,7 +30,6 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
 
         public RecyclerViewHolder(View itemView) {
             super(itemView);
-            bookIcon = (ImageView) itemView.findViewById(R.id.bookIcon);
             bookTitle = (TextView) itemView.findViewById(R.id.bookTitle);
             bookAuthor = (TextView) itemView.findViewById(R.id.bookAuthor);
             bookAvailable = (TextView) itemView.findViewById(R.id.bookAvailable);
@@ -41,7 +38,6 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
             itemView.setOnClickListener(this);
         }
 
-        @Override
         public void onClick(View v) {
             myClickListener.onItemClick(getAdapterPosition(), v);
         }
@@ -55,9 +51,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
         mDataset = myDataset;
     }
 
-    @Override
     public RecyclerViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.home_card_row_layout, parent, false);
         RecyclerViewHolder dataObjectHolder = new RecyclerViewHolder(view);
         return dataObjectHolder;
@@ -66,7 +60,7 @@ public class RecyclerViewHomeAdapter extends RecyclerView.Adapter<RecyclerViewHo
     @Override
     public void onBindViewHolder(RecyclerViewHolder holder, int position) {
         DataSetHome homeDataSet = mDataset.get(position);
-        holder.bookIcon.setImageResource(mDataset.get(position).getmImage());
+        //holder.bookIcon.setImageResource(mDataset.get(position).getmImage());
         holder.bookTitle.setText(mDataset.get(position).getmText1());
         holder.bookAuthor.setText(mDataset.get(position).getmText2());
         holder.bookAvailable.setText(mDataset.get(position).getmText3());

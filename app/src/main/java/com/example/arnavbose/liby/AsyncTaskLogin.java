@@ -64,7 +64,7 @@ public class AsyncTaskLogin extends AsyncTask<String, Void, String> {
 
         //String login_url = "http://192.168.99.1/cgi-bin/login.pl"; //10.0.2.2 for Emulator and 192.168.99.101 for Connectify
         //String login_url = "http://172.19.17.58/cgi-bin/koha/login.pl"; //TODO: Add PHP(Write) URL here.
-        String login_url = "http://10.0.2.2/cgi-bin/login.pl";
+        String login_url = "http://" + AppData.SERVER_ADDRESS + "/cgi-bin/login.pl";
         String method = params[0];
         if (method.equals("Login")) {
             String username = params[1];

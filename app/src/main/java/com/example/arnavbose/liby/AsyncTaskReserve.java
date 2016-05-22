@@ -43,7 +43,7 @@ public class AsyncTaskReserve extends AsyncTask<String, Void, Void> {
 
         //String reserve_url = "http://192.168.99.1/cgi-bin/reserve.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
         //String reserve_url = "http://172.19.17.58/cgi-bin/koha/reserve.pl"; //TODO: Add PHP(Write) URL here.
-        String reserve_url = "http://10.0.2.2/cgi-bin/reserve.pl";
+        String reserve_url = "http://" + AppData.SERVER_ADDRESS + "/cgi-bin/reserve.pl";
         String method = params[0];
         if (method.equals("Reserve")) {
             String borrowerNumber = params[1];

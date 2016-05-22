@@ -11,6 +11,7 @@ public class AppData {
     public static final String REGISTRATION_COMPLETE = "registrationComplete";
     public static boolean LOGIN_CHECK = false;
     public static boolean WELCOME_MESSAGE = false;
+    public static String SERVER_ADDRESS = "192.168.89.1";//10.0.2.2 for Emulator and 192.168.89.1 for phone.
 
     public static SharedPreferences myData;
 

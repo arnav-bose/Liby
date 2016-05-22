@@ -3,8 +3,8 @@
     package="com.example.arnavbose.liby">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <permission
         android:name="com.example.arnavbose.liby.permission.C2D_MESSAGE"
@@ -68,7 +68,9 @@
             android:name=".BookDetails"
             android:configChanges="keyboardHidden|orientation|screenLayout"
             android:parentActivityName=".Search" />
-        <activity android:name=".ImageUpload"></activity>
+        <activity android:name=".ImageUpload"
+            android:configChanges="keyboardHidden|orientation|screenLayout"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>

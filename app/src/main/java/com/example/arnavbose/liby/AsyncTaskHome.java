@@ -65,9 +65,7 @@ public class AsyncTaskHome extends AsyncTask<String, DataSetHome, Void> {
 
     @Override
     protected Void doInBackground(String... params) {
-        //String new_arrivals_url = "http://192.168.99.1/cgi-bin/search.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
-        //String new_arrivals_url = "http://172.19.17.58/cgi-bin/koha/new_arrivals_main.pl"; //TODO: Add PHP(Write) URL here.
-        String new_arrivals_url = "http://10.0.2.2/cgi-bin/home.pl";
+        String new_arrivals_url = "http://" + AppData.SERVER_ADDRESS + "/cgi-bin/home.pl";
         String method = params[0];
         if (method.equals("Home")) {
             try {

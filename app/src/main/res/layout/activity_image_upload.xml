@@ -1,58 +1,45 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.arnavbose.liby.ImageUpload"
-    >
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+
+    <include
+        android:id="@+id/toolbarNotes"
+        layout="@layout/toolbar" />
+
+    <Button
+        android:id="@+id/buttonChoose"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose File" />
 
     <ImageView
+        android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/imageViewPreview"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="95dp"
-        android:minHeight="100dp"
-        android:minWidth="100dp"/>
+        android:layout_weight="1" />
 
-    <TextView
-        android:layout_width="wrap_content"
+
+    <EditText
+        android:id="@+id/editTextNotesTitle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textPercentage"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:textColor="#ffe0e0e0" />
+        android:hint="Title" />
 
-    <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="20dp"
-        android:id="@+id/progressBar"
-        android:layout_below="@+id/textPercentage"
-        android:layout_marginTop="37dp" />
+    <EditText
+        android:id="@+id/editTextNotesContributedBy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Contributed By" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Back"
-        android:id="@+id/buttonBack"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="84dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Upload"
         android:id="@+id/buttonUpload"
-        android:layout_above="@+id/buttonBack"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="25dp"
-        android:onClick="uploadImage"/>
-</RelativeLayout>
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Upload" />
+
+
+</LinearLayout>

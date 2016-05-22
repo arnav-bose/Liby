@@ -17,15 +17,17 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Arnav on 04/05/2016.
  */
-public class AsyncTaskGetURL extends AsyncTask <Void, Void, String[]> {
+public class AsyncTaskGetURL extends AsyncTask <Void, Void, List<String>> {
 
     Context context;
     Activity activity;
-    String[] jsonPath;
+    List<String> jsonPath;
 
     AsyncTaskGetURL(Context context){
         this.context = context;
@@ -34,14 +36,12 @@ public class AsyncTaskGetURL extends AsyncTask <Void, Void, String[]> {
 
     @Override
     protected void onPreExecute() {
-        jsonPath = new String[10];
+        jsonPath = new ArrayList<String>();
     }
 
     @Override
-    protected String[] doInBackground(Void... params) {
-        //String get_url = "http://192.168.99.1/cgi-bin/get_image_urls.pl"; //10.0.2.2 for Emulator and 192.168.43.140 for Micromax
-        //String search_url = "http://172.19.17.58/cgi-bin/koha/get_image_urls.pl"; //TODO: Add PHP(Write) URL here.
-        String get_url = "http://10.0.2.2/cgi-bin/get_image_urls.pl";
+    protected List<String> doInBackground(Void... params) {
+        String get_url = "http://" + AppData.SERVER_ADDRESS + "/cgi-bin/get_image_urls.pl";
             try {
                 URL url = new URL(get_url);
                 HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
@@ -67,7 +67,7 @@ public class AsyncTaskGetURL extends AsyncTask <Void, Void, String[]> {
                 JSONArray parentArray = parentObject.getJSONArray("Urls");
                 for (int i = 0; i < parentArray.length(); i++) {
                     JSONObject finalObject = parentArray.getJSONObject(i);
-                    jsonPath[i] = finalObject.getString("path");
+                    jsonPath.add(finalObject.getString("path"));
                 }
             } catch (MalformedURLException e) {
                 e.printStackTrace();
@@ -85,10 +85,9 @@ public class AsyncTaskGetURL extends AsyncTask <Void, Void, String[]> {
     }
 
     @Override
-    protected void onPostExecute(String[] path) {
+    protected void onPostExecute(List<String> path) {
         super.onPostExecute(path);
         AsyncTaskGetNotes asyncTaskGetNotes = new AsyncTaskGetNotes(context);
-        asyncTaskGetNotes.execute("http://10.0.2.2/pictures/my_photo.jpg");
-
+        asyncTaskGetNotes.execute(path);
     }
 }

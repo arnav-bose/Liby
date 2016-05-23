@@ -21,9 +21,6 @@ import java.util.ArrayList;
 public class FragmentHome extends Fragment {
 
     public RecyclerView mRecyclerView;
-    private RecyclerView.Adapter mAdapter;
-    private RecyclerView.LayoutManager mLayoutManager;
-
 
     @Nullable
     @Override
